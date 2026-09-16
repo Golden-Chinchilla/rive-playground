@@ -5,6 +5,7 @@ exclude:
   - references
   - tools
   - authoring
+  - tests
   - track.luau
 logs:
   file: build/rive.log

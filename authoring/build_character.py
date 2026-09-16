@@ -1,5 +1,6 @@
 """Convert the supplied SVG's absolute M/L/H/V/C/Z paths into editable Rive curves."""
 import re, math, pathlib, xml.etree.ElementTree as E
+from poster import build_poster, WIDTH, HEIGHT, CHARACTER_X, CHARACTER_Y, CHARACTER_SCALE
 ROOT=pathlib.Path(__file__).resolve().parent.parent
 svg=E.parse(ROOT/'source/character.svg').getroot()
 props={}; neck=[]
@@ -53,7 +54,10 @@ for gid in reversed(list(groups)):
   b=bind(prefix+'X',13)+bind(prefix+'Y',14)
  head += [f'<Node name="{gid}">{b}{groups[gid]}</Node>']
 headbind=bind('headX',13,340)+bind('headY',14,450)+bind('headRotation',15)+bind('headScaleX',16,1)
-rml=['<Rive version="1" kind="fragment">','<Artboard name="Character Follow" id="0:2" width="668" height="816" defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" styleId="0:90"><LayoutComponentStyle id="0:90"/>', '<ScriptedDrawable name="Pointer follow controller" scriptAssetId="0:80"/>',f'<Node name="Head rig" x="340" y="450">{headbind}<Node x="-340" y="-450">'+''.join(head)+'</Node></Node>',f'<Node name="Anchored neck">{groups["neck"]}</Node>',groups['background'], '<StateMachine name="Follow" id="0:7"><StateMachineLayer name="Tracking"><EntryState><StateTransition stateToId="0:12"/></EntryState><AnimationState x="220" y="0" id="0:12" animationId="0:20"/><AnyState x="220" y="-150"/><ExitState x="440" y="-150"/></StateMachineLayer></StateMachine><LinearAnimation name="Rest" id="0:20" duration="60"/>','</Artboard>','<ViewModel name="CharacterFollow" id="0:40" defaultInstanceId="0:41">']
+foreground, background = build_poster(bind)
+prop('mode', 0)
+prop('motion', 1)
+rml=['<Rive version="1" kind="fragment">',f'<Artboard name="Character Follow" id="0:2" width="{WIDTH}" height="{HEIGHT}" defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" styleId="0:90"><LayoutComponentStyle id="0:90"/>', '<ScriptedDrawable name="Pointer follow controller" scriptAssetId="0:80"/>',foreground,f'<Node name="Character placement" x="{CHARACTER_X}" y="{CHARACTER_Y}" scaleX="{CHARACTER_SCALE}" scaleY="{CHARACTER_SCALE}">',f'<Node name="Head rig" x="340" y="450">{headbind}<Node x="-340" y="-450">'+''.join(head)+'</Node></Node>',f'<Node name="Anchored neck">{groups["neck"]}</Node>','</Node>',background, '<StateMachine name="Follow" id="0:7"><StateMachineLayer name="Tracking"><EntryState><StateTransition stateToId="0:12"/></EntryState><AnimationState x="220" y="0" id="0:12" animationId="0:20"/><AnyState x="220" y="-150"/><ExitState x="440" y="-150"/></StateMachineLayer></StateMachine><LinearAnimation name="Rest" id="0:20" duration="60"/>','</Artboard>','<ViewModel name="CharacterFollow" id="0:40" defaultInstanceId="0:41">']
 for n,(pid,v) in props.items():rml += [f'<ViewModelPropertyNumber name="{n}" id="{pid}"/>']
 rml+=['<ViewModelInstance name="Default" id="0:41" exports="true">']
 for n,(pid,v) in props.items():rml += [f'<ViewModelInstanceNumber viewModelPropertyId="{pid}" propertyValue="{v}"/>']

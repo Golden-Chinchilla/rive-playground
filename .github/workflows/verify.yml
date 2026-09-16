@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+defaults:
+  run:
+    shell: bash
 concurrency:
   group: rive-${{ github.ref }}
   cancel-in-progress: true
@@ -13,8 +16,12 @@ jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Install graphics dependencies
         run: |
           sudo apt-get update -qq
@@ -24,33 +31,39 @@ jobs:
           curl --fail --silent --show-error --location https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
           bash /tmp/install-rive.sh
           echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
-      - name: Collect compiler diagnostics
+      - name: Generate and validate
         run: |
           mkdir -p build
-          cp scene.rml build/scene.rml
-          tar --exclude=.git --exclude=build -czf build/source.tar.gz .
-          cp -L "$HOME/.rive/bin/rive" build/rive-linux-x64
           rive --version
-          rive schema Node --bindable | tee build/node-schema.txt
-          rive docs --list | tee build/docs-topics.txt
-      - name: Reproduce generated scene
-        run: |
           python3 authoring/build_character.py
-          git diff --exit-code -- scene.rml authoring/neck_data.txt
-      - name: Python regression tests
-        run: python3 -m unittest discover -s tests -v
-        if: ${{ hashFiles('tests/test_*.py') != '' }}
-      - name: Compile and inspect
-        run: |
           rive . --verify --format=json | tee build/verify.json
-          rive inspect . --summary | tee build/inspect.txt
-      - name: Capture rest pose
-        run: xvfb-run -a rive . --screenshot=build/rest.png --advance=1
+          rive inspect . --summary | tee build/inspect.json
+          python3 -m unittest discover -s tests -v
+          python3 authoring/preview_svg.py
+      - name: Capture native frame and diagnostics
+        run: |
+          xvfb-run -a rive . --screenshot=build/native-frame.png --advance=1 --data-dump=build/rest.json
+          cp scene.rml build/generated-scene.rml
         env:
           LIBGL_ALWAYS_SOFTWARE: '1'
+      - name: Commit explicitly requested generated scene
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[rebuild-scene]')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! git diff --quiet -- scene.rml; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- scene.rml
+            git commit -m 'build: regenerate verified Character Lab scene'
+            gh auth setup-git
+            git push origin HEAD:main
+          fi
+      - name: Ensure generated files are synchronized
+        run: git diff --exit-code -- scene.rml authoring/neck_data.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rive-checks
+          name: character-lab-checks
           path: build/
-          if-no-files-found: ignore
+          if-no-files-found: error
