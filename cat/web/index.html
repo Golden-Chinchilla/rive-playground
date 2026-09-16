@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>出去走走 · Rive Cat Walk</title>
+<style>
+:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171717;background:#f5f5f3}*{box-sizing:border-box}body{margin:0;padding:40px 5vw 24px}main{max-width:1160px;margin:auto}header{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:24px;border-bottom:1px solid #d8d8d4}.brand{font-weight:750;letter-spacing:-.4px;font-size:16px}.eyebrow,.tag,.meta{font:11px/1.5 ui-monospace,monospace;letter-spacing:1.5px}.tag{border:1px solid #c6c6c1;padding:6px 10px;border-radius:30px}.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:40px 0 26px}h1{font-size:clamp(32px,4.5vw,56px);line-height:1.14;letter-spacing:-2px;margin:12px 0 0;font-weight:750}.intro p{color:#666;font-size:14px;line-height:1.85;margin:0}.stage{height:440px;position:relative;overflow:hidden;background:white;border-radius:20px;border:1px solid #e1e1dc}.stage-label{position:absolute;top:24px;left:26px;color:#888}.floor{position:absolute;left:0;right:0;bottom:71px;height:1px;background:#eeeeea}.actor{position:absolute;width:min(520px,94vw);aspect-ratio:10/7;bottom:20px;left:0;will-change:transform}canvas{display:block;width:100%;height:100%}.controls{display:flex;align-items:center;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:24px 0}.buttons{display:flex;gap:10px;flex-wrap:wrap}button{font:inherit;font-size:13px;padding:13px 21px;border-radius:30px;border:1px solid #ccc;color:#333;background:transparent;cursor:pointer}button:hover{background:#e9e9e5}button:focus-visible{outline:3px solid #777;outline-offset:3px}button.primary{background:#171717;color:white;border-color:#171717;min-width:100px}button:disabled{opacity:.45;cursor:wait}button[aria-pressed="true"]:not(.primary){background:white;border-color:#171717}.meta{color:#888}#message{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:32px;color:#666;font-size:14px;line-height:1.8;pointer-events:none}#message:empty{display:none}footer{border-top:1px solid #d8d8d4;padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#888;font-size:12px}a{color:inherit;text-underline-offset:3px}@media(max-width:600px){body{padding:22px 18px}.intro{display:block;padding-top:28px}.intro p{margin-top:16px}.stage{height:350px}.stage-label{font-size:10px}.actor{width:400px}.floor{bottom:59px}.tag{font-size:9px}}
+</style>
+</head>
+<body>
+<main>
+<header><span class="brand">Rive playground ↗</span><span class="tag">MOTION STUDY / 001</span></header>
+<section class="intro"><div><span class="eyebrow">A LITTLE WALK, A LITTLE JOY.</span><h1>出去走走。</h1></div><p>黑白线条，一点点好奇心。<br>这只猫，是实时播放的 Rive 矢量动画。</p></section>
+<section class="stage" id="stage" aria-label="黑白猫咪走路动画">
+<span class="stage-label eyebrow">CAT WALK · LIVE RIVE CANVAS</span><div class="floor" aria-hidden="true"></div>
+<div class="actor" id="actor"><canvas id="cat" role="img" aria-label="一只黑白粗线条猫，四条腿交替迈步，头部和尾巴轻轻摆动"></canvas></div>
+<div id="message" role="status" aria-live="polite">正在加载猫咪…</div>
+</section>
+<section class="controls" aria-label="动画控制"><div class="buttons">
+<button id="play" class="primary" disabled aria-pressed="true">Ⅱ 暂停</button><button id="travel" disabled aria-pressed="true">↗ 往前走</button><button id="direction" disabled>← 向左走</button>
+</div><span class="meta">1.2 S LOOP &nbsp; / &nbsp; 4-BEAT WALK &nbsp; / &nbsp; VECTOR</span></section>
+<footer><span>独立头部 · 四肢 · 弯尾 &nbsp; / &nbsp; 原创矢量重绘</span><a href="./walking-cat.riv" download>下载 .riv 资源 ↗</a></footer>
+</main>
+<script src="https://unpkg.com/@rive-app/canvas@2.42.1/rive.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const stage = $('stage'), actor = $('actor'), message = $('message');
+  const controls = [$('play'), $('travel'), $('direction')];
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let running = !reduced.matches, travel = true, direction = 1, ready = false;
+  let time = 0, last = null, x = 0, raf = 0, destroyed = false;
+  const cycle = 1.2;
+  // Match the baked stance speed so a planted paw stays on the webpage ground.
+  const unitsPerSecond = 104 / (0.64 * cycle);
+  if (!window.rive) { message.textContent = 'Rive 运行库未能加载，请检查网络后刷新。'; return; }
+  rive.RuntimeLoader.setWasmUrl('https://unpkg.com/@rive-app/canvas@2.42.1/rive.wasm');
+  const player = new rive.Rive({
+    src: './walking-cat.riv', canvas: $('cat'), artboard: 'Cat Walk',
+    animations: 'Walk', autoplay: false,
+    layout: new rive.Layout({ fit: rive.Fit.Contain, alignment: rive.Alignment.Center }),
+    onLoad: () => {
+      ready = true; message.textContent = ''; controls.forEach(b => b.disabled = false);
+      center(); player.resizeDrawingSurfaceToCanvas(); syncControls(); player.scrub('Walk', 0);
+      raf = requestAnimationFrame(tick);
+    },
+    onLoadError: () => {
+      message.textContent = '动画加载失败。请先运行 python3 cat/build.py 和 rive cat --once，再把 cat/build/walking-cat.riv 复制到 cat/web/，通过 HTTP 打开页面。';
+    }
+  });
+  function center() { x = (stage.clientWidth - actor.clientWidth) / 2; place(); }
+  function place() { actor.style.transform = `translateX(${x}px) scaleX(${direction})`; }
+  function syncControls() {
+    $('play').textContent = running ? 'Ⅱ 暂停' : '▶ 播放';
+    $('play').setAttribute('aria-pressed', String(running));
+    $('travel').textContent = travel ? '↗ 往前走' : '↻ 原地循环';
+    $('travel').setAttribute('aria-pressed', String(travel));
+    $('direction').textContent = direction === 1 ? '← 向左走' : '向右走 →';
+  }
+  function tick(now) {
+    if (destroyed) return;
+    const dt = last === null ? 0 : Math.min((now-last)/1000, 0.05); last = now;
+    if (running && ready && !document.hidden) {
+      time = (time + dt) % cycle; player.scrub('Walk', time);
+      if (travel) {
+        x += direction * unitsPerSecond * (actor.clientWidth / 800) * dt;
+        if (x > stage.clientWidth + 8) x = -actor.clientWidth - 8;
+        if (x < -actor.clientWidth - 8) x = stage.clientWidth + 8;
+        place();
+      }
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  $('play').onclick = () => { running = !running; last = null; syncControls(); };
+  $('travel').onclick = () => { travel = !travel; center(); syncControls(); };
+  $('direction').onclick = () => { direction *= -1; place(); syncControls(); };
+  const observer = new ResizeObserver(() => { if (ready) { player.resizeDrawingSurfaceToCanvas(); center(); } });
+  observer.observe(stage);
+  document.addEventListener('visibilitychange', () => { last = null; });
+  reduced.addEventListener('change', event => { if (event.matches) { running = false; syncControls(); } });
+  window.addEventListener('pagehide', event => {
+    if (event.persisted) return;
+    destroyed = true; cancelAnimationFrame(raf); observer.disconnect(); player.cleanup();
+  });
+  // Deterministic test hook; it still renders the compiled .riv, never SVG.
+  window.catDemo = {
+    get ready() { return ready; }, get running() { return running; }, get x() { return x; },
+    seek(seconds) { running = false; time = ((seconds % cycle)+cycle)%cycle; player.scrub('Walk', time); center(); syncControls(); },
+    player
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 name: character-follow
 main: Character Follow
 exclude:
+  - cat
   - legacy-backup
   - references
   - tools

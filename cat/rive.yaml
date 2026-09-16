@@ -1,0 +1,8 @@
+name: walking-cat
+main: Cat Walk
+exclude:
+  - web
+  - tests
+logs:
+  file: build/rive.log
+  problems: build/problems.log
