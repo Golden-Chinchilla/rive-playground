@@ -1,4 +1,22 @@
-# Character Lab — Look Alive
+# Rive Playground
+
+## 新增：猫咪走路
+
+保留下面的 Character Lab，新增独立的黑白猫咪四拍走路循环。
+
+```sh
+rive cat --fit=contain
+
+# 网页版：播放/暂停、原地走/往前走、左右方向切换
+python3 -m http.server 8000 --directory cat/web
+# 打开 http://localhost:8000
+```
+
+源码、重新生成方法与前端接入参数见 [cat/README.md](cat/README.md)。猫咪是独立部件的矢量重绘，使用 Rive 原生路径关键帧，不是视频或整张图片平移。
+
+---
+
+## Character Lab — Look Alive
 
 黑白粗描边的交互人物海报。原来的矢量角色保留在中央，周围增加标题、环形背景、对话气泡、手写感信息卡、实时注视仪表和底部模式控制。全部 UI 都在 Rive 场景内，不是叠在画布外的 HTML。
 

@@ -8,40 +8,70 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: walking-cat-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   preview:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Install Rive CLI
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y libegl1 libgles2 libx11-6 libgl1-mesa-dri xvfb
+          sudo apt-get install -y libegl1 libgles2 libx11-6 libgl1-mesa-dri
           curl -fsSL https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
           bash /tmp/install-rive.sh
           echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
       - name: Generate and validate cat
         run: |
+          set -euo pipefail
           mkdir -p build/cat
           rive --version | tee build/cat/cli-version.txt
           python3 cat/build.py
           rive cat --verify --format=json | tee build/cat/verify.json
           rive inspect cat --summary | tee build/cat/inspect.json
-          if test -d cat/tests; then python3 -m unittest discover -s cat/tests -v; fi
+          python3 -m unittest discover -s cat/tests -v
           rive cat --once
-          cp cat/build/walking-cat.riv build/cat/
-          cp cat/scene.rml build/cat/
-      - name: Prepare pinned browser runtime for preview verification
+          cp cat/build/walking-cat.riv cat/web/walking-cat.riv
+          cp cat/build/walking-cat.riv cat/scene.rml build/cat/
+      - name: Check actual browser rendering and controls
         run: |
-          npm pack @rive-app/canvas@2.42.1 --pack-destination build/cat
-          cp -L /usr/lib/x86_64-linux-gnu/libGLESv2.so.2 build/cat/libGLESv2.so.2
-          tar --exclude=./.git --exclude=./build --exclude=./cat/build -czf build/cat/repository.tar.gz .
+          set -euo pipefail
+          mkdir -p /tmp/cat-runtime
+          npm pack @rive-app/canvas@2.42.1 --pack-destination /tmp/cat-runtime
+          tar -xzf /tmp/cat-runtime/rive-app-canvas-2.42.1.tgz -C /tmp/cat-runtime
+          python3 -m pip install playwright==1.57.0 Pillow==11.3.0
+          if ! command -v google-chrome && ! command -v chromium; then
+            python3 -m playwright install --with-deps chromium
+          fi
+          python3 cat/tests/browser_check.py --runtime /tmp/cat-runtime/package --output build/cat/browser
+      - name: Commit explicitly requested generated cat assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[rebuild-cat]')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -- cat/scene.rml cat/web/walking-cat.riv
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'build: regenerate verified walking cat assets'
+            gh auth setup-git
+            git push origin HEAD:main
+          fi
+      - name: Check generated files stay synchronized
+        run: git diff --exit-code -- cat/scene.rml cat/web/walking-cat.riv
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: walking-cat-preview
           path: build/cat/
-          retention-days: 7
+          retention-days: 14
