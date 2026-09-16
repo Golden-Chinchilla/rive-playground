@@ -18,12 +18,16 @@ jobs:
       - name: Install Rive CLI
         run: |
           curl --fail --silent --show-error --location https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
-          sh /tmp/install-rive.sh
+          bash /tmp/install-rive.sh
           echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
-      - name: Show compiler and binding schema
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Collect compiler diagnostics
         run: |
+          mkdir -p build
           rive --version
-          rive schema Node --bindable
+          rive schema Node --bindable | tee build/node-schema.txt
+          rive docs --list | tee build/docs-topics.txt
+          cp scene.rml build/scene.rml
       - name: Reproduce generated scene
         run: |
           python3 authoring/build_character.py
@@ -33,12 +37,10 @@ jobs:
         if: ${{ hashFiles('tests/test_*.py') != '' }}
       - name: Compile and inspect
         run: |
-          rive . --verify --format=json
-          rive inspect . --summary
+          rive . --verify --format=json | tee build/verify.json
+          rive inspect . --summary | tee build/inspect.txt
       - name: Capture rest pose
-        run: |
-          mkdir -p build
-          rive . --screenshot=build/rest.png --advance=1
+        run: rive . --screenshot=build/rest.png --advance=1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
