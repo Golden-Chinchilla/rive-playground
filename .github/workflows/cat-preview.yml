@@ -1,0 +1,51 @@
+name: Walking cat preview
+on:
+  pull_request:
+    paths: ['cat/**', '.github/workflows/cat-preview.yml']
+  push:
+    branches: [main]
+    paths: ['cat/**', '.github/workflows/cat-preview.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install Rive CLI and rendering tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libegl1 libgles2 libx11-6 libgl1-mesa-dri xvfb
+          curl -fsSL https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
+          bash /tmp/install-rive.sh
+          echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
+      - name: Inspect installed animation schema
+        run: |
+          mkdir -p build/cat
+          rive --version | tee build/cat/cli-version.txt
+          rive docs --list > build/cat/topics.txt
+          rive schema --search Key > build/cat/key-types.txt
+          for type in LinearAnimation KeyedObject KeyedProperty KeyFrameDouble StateMachine AnimationState Node; do
+            rive schema "$type" > "build/cat/$type.txt"
+          done
+          cp -L "$HOME/.rive/bin/rive" build/cat/rive-cli
+          tar --exclude=./.git --exclude=./build -czf build/cat/repository.tar.gz .
+      - name: Build walking cat when present
+        run: |
+          if test -f cat/build.py; then
+            python3 cat/build.py
+            rive cat --verify --format=json | tee build/cat/verify.json
+            rive inspect cat --summary | tee build/cat/inspect.txt
+            rive cat --once
+            cp cat/build/*.riv build/cat/
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: walking-cat-preview
+          path: build/cat/
+          retention-days: 7
