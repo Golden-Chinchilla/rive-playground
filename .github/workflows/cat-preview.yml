@@ -16,33 +16,29 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Install Rive CLI and rendering tools
+      - name: Install Rive CLI
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y libegl1 libgles2 libx11-6 libgl1-mesa-dri xvfb
           curl -fsSL https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
           bash /tmp/install-rive.sh
           echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
-      - name: Inspect installed animation schema
+      - name: Generate and validate cat
         run: |
           mkdir -p build/cat
           rive --version | tee build/cat/cli-version.txt
-          rive docs --list > build/cat/topics.txt
-          rive schema --search Key > build/cat/key-types.txt
-          for type in LinearAnimation KeyedObject KeyedProperty KeyFrameDouble StateMachine AnimationState Node; do
-            rive schema "$type" > "build/cat/$type.txt"
-          done
-          cp -L "$HOME/.rive/bin/rive" build/cat/rive-cli
-          tar --exclude=./.git --exclude=./build -czf build/cat/repository.tar.gz .
-      - name: Build walking cat when present
+          python3 cat/build.py
+          rive cat --verify --format=json | tee build/cat/verify.json
+          rive inspect cat --summary | tee build/cat/inspect.json
+          if test -d cat/tests; then python3 -m unittest discover -s cat/tests -v; fi
+          rive cat --once
+          cp cat/build/walking-cat.riv build/cat/
+          cp cat/scene.rml build/cat/
+      - name: Prepare pinned browser runtime for preview verification
         run: |
-          if test -f cat/build.py; then
-            python3 cat/build.py
-            rive cat --verify --format=json | tee build/cat/verify.json
-            rive inspect cat --summary | tee build/cat/inspect.txt
-            rive cat --once
-            cp cat/build/*.riv build/cat/
-          fi
+          npm pack @rive-app/canvas@2.42.1 --pack-destination build/cat
+          cp -L /usr/lib/x86_64-linux-gnu/libGLESv2.so.2 build/cat/libGLESv2.so.2
+          tar --exclude=./.git --exclude=./build --exclude=./cat/build -czf build/cat/repository.tar.gz .
       - uses: actions/upload-artifact@v4
         if: always()
         with:
