@@ -1,0 +1,11 @@
+name: character-follow
+main: Character Follow
+exclude:
+  - legacy-backup
+  - references
+  - tools
+  - authoring
+  - track.luau
+logs:
+  file: build/rive.log
+  problems: build/problems.log

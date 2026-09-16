@@ -1,0 +1,328 @@
+<Rive version="1" kind="fragment">
+<Artboard name="Character Follow" id="0:2" width="668" height="816" defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" styleId="0:90"><LayoutComponentStyle id="0:90"/>
+<ScriptedDrawable name="Pointer follow controller" scriptAssetId="0:80"/>
+<Node name="Head rig" x="340" y="450"><DataBindContext sourcePathIds="0:40-0:1036" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1037" propertyKey="14"/><DataBindContext sourcePathIds="0:40-0:1038" propertyKey="15"/><DataBindContext sourcePathIds="0:40-0:1039" propertyKey="16"/><Node x="-340" y="-450"><Node name="hair"><Shape name="hair-silhouette">
+<PointsPath name="hair-silhouette-path" isClosed="true">
+<CubicDetachedVertex x="199.23" y="183.32" inRotation="0.0" inDistance="0.0" outRotation="-1.725080960598754" outDistance="38.588363530992076"></CubicDetachedVertex>
+<CubicDetachedVertex x="242.12" y="98.94" inRotation="2.7493008863274593" inDistance="32.931641319557706" outRotation="-0.3950947849298677" outDistance="25.331539629481657"></CubicDetachedVertex>
+<CubicDetachedVertex x="311.54" y="106.6" inRotation="-2.5676720265790087" inDistance="24.423097674128105" outRotation="-0.7928636435626846" outDistance="35.992738156467055"></CubicDetachedVertex>
+<CubicDetachedVertex x="400.81" y="103.27" inRotation="-2.4249120327109015" inDistance="35.01371159988611" outRotation="-0.7102144126664781" outDistance="34.83148288545868"></CubicDetachedVertex>
+<CubicDetachedVertex x="479.88" y="114.45" inRotation="-2.1246721349013287" inDistance="36.57881490699228" outRotation="0.08336898458647855" outDistance="40.10930690002013"></CubicDetachedVertex>
+<CubicDetachedVertex x="537.34" y="198.12" inRotation="-1.3097000266254193" inDistance="43.03868608589256" outRotation="0.7069807185251484" outDistance="28.343087340655003"></CubicDetachedVertex>
+<CubicDetachedVertex x="553.67" y="268.39" inRotation="-1.163076550876805" inDistance="26.0014038082562" outRotation="2.033883292983949" outDistance="23.93040325610916"></CubicDetachedVertex>
+<CubicDetachedVertex x="496.84" y="304.04" inRotation="-0.031546333409725236" inDistance="28.53419702742662" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<CubicDetachedVertex x="492.31" y="242.79" inRotation="0.0" inDistance="0.0" outRotation="2.79926706958985" outDistance="14.448342465487185"></CubicDetachedVertex>
+<CubicDetachedVertex x="448.31" y="240.45" inRotation="0.4107801190149291" inDistance="14.048718802794795" outRotation="2.6529451718113783" outDistance="22.005312994820148"></CubicDetachedVertex>
+<CubicDetachedVertex x="388.04" y="230.68" inRotation="0.8083974672821372" inDistance="27.36519870200103" outRotation="2.69995771091208" outDistance="15.441554325909065"></CubicDetachedVertex>
+<CubicDetachedVertex x="336.77" y="231.41" inRotation="0.43402486264957724" inDistance="18.571984277400215" outRotation="2.230027705700332" outDistance="40.178970867855725"></CubicDetachedVertex>
+<CubicDetachedVertex x="234.94" y="242.46" inRotation="0.6325938483064487" inDistance="41.62447597267741" outRotation="0.6797648375411798" outDistance="26.423372229902828"></CubicDetachedVertex>
+<CubicDetachedVertex x="256.84" y="311.81" inRotation="-1.5258521669929266" inDistance="29.37966813971869" outRotation="1.751384040846045" outDistance="30.45525406231244"></CubicDetachedVertex>
+<CubicDetachedVertex x="234.65" y="390.1" inRotation="-0.729515208047422" inDistance="17.344120041097508" outRotation="2.48910450047848" outDistance="9.124368471297046"></CubicDetachedVertex>
+<CubicDetachedVertex x="202.91" y="391.5" inRotation="0.16375803355760202" inDistance="13.0039724699801" outRotation="-2.622578849477455" outDistance="28.123635966922894"></CubicDetachedVertex>
+<CubicDetachedVertex x="163.9" y="298.32" inRotation="1.5254382024422923" inDistance="34.845839062935475" outRotation="-1.6036073045024306" outDistance="9.144922088241088"></CubicDetachedVertex>
+<CubicDetachedVertex x="165.19" y="274.17" inRotation="1.711559595036807" inDistance="7.484022982327056" outRotation="-2.2043517805062423" outDistance="23.32715370549953"></CubicDetachedVertex>
+<CubicDetachedVertex x="156.21" y="211.81" inRotation="2.0277854385585927" inDistance="22.164397126924058" outRotation="-1.1278830731456064" outDistance="19.413242902719773"></CubicDetachedVertex>
+<CubicDetachedVertex x="199.18" y="183.01" inRotation="3.0226560727359946" inDistance="16.939672369913175" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FF000000"/></Fill>
+</Shape></Node><Node name="ear"><Shape name="ear-outline">
+<PointsPath name="ear-outline-path" isClosed="false">
+<CubicDetachedVertex x="222.29" y="391.94" inRotation="0.0" inDistance="0.0" outRotation="3.116393628988468" outDistance="14.684662066251281"></CubicDetachedVertex>
+<CubicDetachedVertex x="182.25" y="406.64" inRotation="-1.306847831286386" inDistance="17.133373865062268" outRotation="1.8110492625349441" outDistance="16.936451812584583"></CubicDetachedVertex>
+<CubicDetachedVertex x="197.69" y="447.18" inRotation="-2.7431335772715344" inDistance="15.309333754282044" outRotation="0.3760613974969832" outDistance="14.621795375397642"></CubicDetachedVertex>
+<CubicDetachedVertex x="234.73" y="427.49" inRotation="1.9733700002564787" inDistance="14.727369079370561" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="11.15" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="ear-fill">
+<PointsPath name="ear-fill-path" isClosed="true">
+<CubicDetachedVertex x="222.29" y="391.94" inRotation="0.0" inDistance="0.0" outRotation="3.116393628988468" outDistance="14.684662066251281"></CubicDetachedVertex>
+<CubicDetachedVertex x="182.25" y="406.64" inRotation="-1.306847831286386" inDistance="17.133373865062268" outRotation="1.8110492625349441" outDistance="16.936451812584583"></CubicDetachedVertex>
+<CubicDetachedVertex x="197.69" y="447.18" inRotation="-2.7431335772715344" inDistance="15.309333754282044" outRotation="0.3760613974969832" outDistance="14.621795375397642"></CubicDetachedVertex>
+<CubicDetachedVertex x="234.73" y="427.49" inRotation="1.9733700002564787" inDistance="14.727369079370561" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<StraightVertex x="223.8" y="422.0"></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape></Node><Node name="mouth"><DataBindContext sourcePathIds="0:40-0:1028" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1029" propertyKey="14"/><Shape name="mouth">
+<PointsPath name="mouth-path" isClosed="false">
+<CubicDetachedVertex x="347.38" y="450.32" inRotation="0.0" inDistance="0.0" outRotation="0.4793958694871289" outDistance="23.003047624173657"></CubicDetachedVertex>
+<CubicDetachedVertex x="418.46" y="459.99" inRotation="2.785048504325347" inDistance="24.180760947497053" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="11.15" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape></Node><Node name="eyes"><DataBindContext sourcePathIds="0:40-0:1030" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1031" propertyKey="14"/><Shape name="pupil-right">
+<Ellipse x="460.92" y="347.98" width="20.8" height="17.72"/>
+<Fill><SolidColor colorValue="FF000000"/></Fill>
+</Shape>
+<Shape name="pupil-left">
+<Ellipse x="344.83" y="345.70" width="20.9" height="17.64"/>
+<Fill><SolidColor colorValue="FF000000"/></Fill>
+</Shape></Node><Node name="nose"><DataBindContext sourcePathIds="0:40-0:1032" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1033" propertyKey="14"/><Shape name="nose-outline">
+<PointsPath name="nose-outline-path" isClosed="false">
+<CubicDetachedVertex x="378.25" y="372.47" inRotation="0.0" inDistance="0.0" outRotation="-0.753094221249266" outDistance="15.98188036496334"></CubicDetachedVertex>
+<CubicDetachedVertex x="421.62" y="368.27" inRotation="-2.5871695638157606" inDistance="17.513437697950653" outRotation="0.6418829872281917" outDistance="17.304022653706873"></CubicDetachedVertex>
+<CubicDetachedVertex x="430.39" y="408.12" inRotation="-1.0191845296178528" inDistance="15.170000000000007" outRotation="2.1667590910615044" outDistance="21.254011386088962"></CubicDetachedVertex>
+<CubicDetachedVertex x="378.32" y="414.24" inRotation="0.5236063406033393" inDistance="23.35969391922764" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="11.15" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="nose-fill">
+<PointsPath name="nose-fill-path" isClosed="true">
+<CubicDetachedVertex x="378.25" y="372.47" inRotation="0.0" inDistance="0.0" outRotation="-0.753094221249266" outDistance="15.98188036496334"></CubicDetachedVertex>
+<CubicDetachedVertex x="421.62" y="368.27" inRotation="-2.5871695638157606" inDistance="17.513437697950653" outRotation="0.6418829872281917" outDistance="17.304022653706873"></CubicDetachedVertex>
+<CubicDetachedVertex x="430.39" y="408.12" inRotation="-1.0191845296178528" inDistance="15.170000000000007" outRotation="2.1667590910615044" outDistance="21.254011386088962"></CubicDetachedVertex>
+<CubicDetachedVertex x="378.32" y="414.24" inRotation="0.5236063406033393" inDistance="23.35969391922764" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape></Node><Node name="face-right-edge"><Shape name="face-outline">
+<PointsPath name="face-outline-path" isClosed="false">
+<CubicDetachedVertex x="213.82" y="448.58" inRotation="0.0" inDistance="0.0" outRotation="1.2974396253029725" outDistance="65.3047571008422"></CubicDetachedVertex>
+<CubicDetachedVertex x="331.21" y="583.46" inRotation="-2.8508666241974194" inDistance="55.05012261566724" outRotation="0.3063586968860207" outDistance="34.51718702327872"></CubicDetachedVertex>
+<CubicDetachedVertex x="422.36" y="584.41" inRotation="2.8315727309162355" inDistance="28.845119171187395" outRotation="-0.34072097622186365" outDistance="34.174559250998364"></CubicDetachedVertex>
+<CubicDetachedVertex x="482.83" y="521.76" inRotation="1.8530027190260865" inDistance="31.9956403280197" outRotation="-1.285881846956985" outDistance="20.350412772226495"></CubicDetachedVertex>
+<CubicDetachedVertex x="491.32" y="450.58" inRotation="1.6430227948236151" inDistance="28.68478690874312" outRotation="-1.49150582144325" outDistance="70.95292312512568"></CubicDetachedVertex>
+<CubicDetachedVertex x="499.1" y="241.02" inRotation="1.60487923309265" inDistance="43.72539422349445" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="11.03" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape></Node><Node name="glasses"><DataBindContext sourcePathIds="0:40-0:1034" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1035" propertyKey="14"/><Shape name="glasses-right-rim">
+<PointsPath name="glasses-right-rim-path" isClosed="true">
+<CubicDetachedVertex x="546.97" y="345.25" inRotation="0.0" inDistance="0.0" outRotation="1.6307513032165026" outDistance="37.21686983076356"></CubicDetachedVertex>
+<CubicDetachedVertex x="488.48" y="413.57" inRotation="-0.047375628251061584" inDistance="32.09601221335754" outRotation="3.1038172763924576" outDistance="32.83342351933469"></CubicDetachedVertex>
+<CubicDetachedVertex x="431.23" y="346.16" inRotation="1.5879328428491495" inDistance="36.76539813465916" outRotation="-1.5693082326552261" outDistance="40.32004464283248"></CubicDetachedVertex>
+<CubicDetachedVertex x="490.49" y="273.94" inRotation="3.1345662601210487" inDistance="31.310772906461445" outRotation="-0.010422675912462232" outDistance="32.62177187094534"></CubicDetachedVertex>
+<CubicDetachedVertex x="546.76" y="345.27" inRotation="-1.51000396811868" inDistance="39.50297330581586" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="10.93" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="glasses-left-rim">
+<PointsPath name="glasses-left-rim-path" isClosed="true">
+<CubicDetachedVertex x="378.42" y="343.64" inRotation="0.0" inDistance="0.0" outRotation="1.6300004794514402" outDistance="36.67425527532905"></CubicDetachedVertex>
+<CubicDetachedVertex x="317.19" y="411.23" inRotation="-0.028933738120684074" inDistance="33.18388916326718" outRotation="3.114909113134523" outDistance="34.48227515695561"></CubicDetachedVertex>
+<CubicDetachedVertex x="256.0" y="345.32" inRotation="1.5515414852603766" inDistance="36.35673940275725" outRotation="-1.5919096938245203" outDistance="41.20918465585068"></CubicDetachedVertex>
+<CubicDetachedVertex x="318.49" y="271.47" inRotation="3.135191809962604" inDistance="34.37070409520294" outRotation="-0.0002942041692123399" outDistance="33.99000147102087"></CubicDetachedVertex>
+<CubicDetachedVertex x="378.36" y="343.97" inRotation="-1.529597537633486" inDistance="41.27502392488708" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="11.30" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="glasses-right-temple">
+<PointsPath name="glasses-right-temple-path" isClosed="false">
+<StraightVertex x="497.42" y="339.57"></StraightVertex>
+<StraightVertex x="546.95" y="343.97"></StraightVertex>
+</PointsPath>
+<Stroke thickness="10.90" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="glasses-bridge">
+<PointsPath name="glasses-bridge-path" isClosed="false">
+<CubicDetachedVertex x="378.49" y="339.55" inRotation="0.0" inDistance="0.0" outRotation="-0.38675211343022914" outDistance="16.64976876716313"></CubicDetachedVertex>
+<CubicDetachedVertex x="430.23" y="341.28" inRotation="-2.635947126781118" inDistance="19.385914990012747" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Stroke thickness="11.03" cap="butt" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape></Node><Node name="lenses"><DataBindContext sourcePathIds="0:40-0:1034" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1035" propertyKey="14"/><Shape name="right-lens-outside-fill">
+<PointsPath name="right-lens-outside-fill-path" isClosed="true">
+<CubicDetachedVertex x="500.9" y="298.7" inRotation="0.0" inDistance="0.0" outRotation="-0.14601225771127516" outDistance="13.746272221951688"></CubicDetachedVertex>
+<CubicDetachedVertex x="527.0" y="289.2" inRotation="2.677945044588975" inDistance="4.248529157249575" outRotation="0.8524353702908444" outDistance="20.056171120131626"></CubicDetachedVertex>
+<CubicDetachedVertex x="547.2" y="345.1" inRotation="-1.5613179376650375" inDistance="21.100947846009216" outRotation="1.5826652056411583" outDistance="33.70237380363584"></CubicDetachedVertex>
+<CubicDetachedVertex x="494.6" y="413.1" inRotation="-0.14101366260781012" inDistance="32.017807545177035" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape>
+<Shape name="right-lens-fill">
+<PointsPath name="right-lens-fill-path" isClosed="true">
+<CubicDetachedVertex x="493.8" y="290.4" inRotation="0.0" inDistance="0.0" outRotation="-3.0448086084823194" outDistance="31.045289497764426"></CubicDetachedVertex>
+<CubicDetachedVertex x="437.0" y="346.8" inRotation="-1.517050668132603" inDistance="31.64569480987898" outRotation="1.6163488385755378" outDistance="35.13644831225828"></CubicDetachedVertex>
+<CubicDetachedVertex x="489.1" y="407.5" inRotation="3.1233020106329725" inDistance="32.80548734586945" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<StraightVertex x="493.8" y="290.4"></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape>
+<Shape name="left-lens-fill">
+<PointsPath name="left-lens-fill-path" isClosed="true">
+<CubicDetachedVertex x="373.6" y="342.9" inRotation="0.0" inDistance="0.0" outRotation="1.5763985090833907" outDistance="35.700560219694076"></CubicDetachedVertex>
+<CubicDetachedVertex x="317.2" y="405.5" inRotation="0.00937472535628025" inDistance="32.00140621910231" outRotation="-3.1322761529614893" outDistance="32.2013974852024"></CubicDetachedVertex>
+<CubicDetachedVertex x="261.6" y="345.1" inRotation="1.582191844899524" inDistance="35.1022791282845" outRotation="-1.558058162304833" outDistance="31.402547667347026"></CubicDetachedVertex>
+<CubicDetachedVertex x="316.9" y="288.7" inRotation="3.138366858327171" inDistance="31.000161289902994" outRotation="-0.003225795262620088" outDistance="31.000161289902994"></CubicDetachedVertex>
+<CubicDetachedVertex x="373.6" y="342.9" inRotation="-1.6027343448314475" inDistance="31.315970366571705" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape></Node><Node name="glasses-shadows"><DataBindContext sourcePathIds="0:40-0:1034" propertyKey="13"/><DataBindContext sourcePathIds="0:40-0:1035" propertyKey="14"/><Shape name="bridge-shadow">
+<PointsPath name="bridge-shadow-path" isClosed="true">
+<CubicDetachedVertex x="377.0" y="346.0" inRotation="0.0" inDistance="0.0" outRotation="-0.2971808304163146" outDistance="16.733499335165966"></CubicDetachedVertex>
+<CubicDetachedVertex x="429.2" y="349.0" inRotation="-2.7658847041406656" inDistance="19.349676999888146" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<CubicDetachedVertex x="429.7" y="360.2" inRotation="0.0" inDistance="0.0" outRotation="-2.7070847761014605" outDistance="19.95419755339709"></CubicDetachedVertex>
+<CubicDetachedVertex x="378.0" y="356.1" inRotation="-0.3737268199655532" inDistance="16.434415109762817" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFD6D6D6"/></Fill>
+</Shape>
+<Shape name="right-lens-shadow">
+<PointsPath name="right-lens-shadow-path" isClosed="true">
+<CubicDetachedVertex x="495.2" y="281.4" inRotation="0.0" inDistance="0.0" outRotation="-2.983050770087713" outDistance="34.83690571793078"></CubicDetachedVertex>
+<CubicDetachedVertex x="427.7" y="350.7" inRotation="-1.5155640976712312" inDistance="41.66353321551111" outRotation="1.6266821286904969" outDistance="42.967080422109234"></CubicDetachedVertex>
+<CubicDetachedVertex x="488.7" y="430.0" inRotation="-3.118159443710326" inDistance="38.410545427004784" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<StraightVertex x="495.2" y="281.4"></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFD6D6D6"/></Fill>
+</Shape>
+<Shape name="left-lens-shadow">
+<PointsPath name="left-lens-shadow-path" isClosed="true">
+<CubicDetachedVertex x="381.0" y="354.0" inRotation="0.0" inDistance="0.0" outRotation="1.5514282888951285" outDistance="41.307747457347524"></CubicDetachedVertex>
+<CubicDetachedVertex x="317.8" y="428.7" inRotation="0.0" inDistance="36.0" outRotation="3.141592653589793" outDistance="36.900000000000034"></CubicDetachedVertex>
+<CubicDetachedVertex x="250.4" y="357.8" inRotation="1.5350059898866704" inDistance="39.12505591050315" outRotation="-1.5919696327552408" outDistance="42.50952834365491"></CubicDetachedVertex>
+<CubicDetachedVertex x="315.8" y="279.1" inRotation="3.128079962576465" inDistance="37.003378224156776" outRotation="-0.013512691013328216" outDistance="37.003378224156776"></CubicDetachedVertex>
+<CubicDetachedVertex x="381.0" y="354.0" inRotation="-1.596491604801027" inDistance="42.814133180528145" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFD6D6D6"/></Fill>
+</Shape></Node><Node name="hair-shadow"><Shape name="hair-shadow">
+<PointsPath name="hair-shadow-path" isClosed="true">
+<CubicDetachedVertex x="234.7" y="243.0" inRotation="0.0" inDistance="0.0" outRotation="0.5961205063994746" outDistance="37.5821766266937"></CubicDetachedVertex>
+<CubicDetachedVertex x="337.2" y="242.5" inRotation="2.3968799908818426" inDistance="39.984622043980856" outRotation="0.4947256824842482" outDistance="17.27078457974621"></CubicDetachedVertex>
+<CubicDetachedVertex x="389.7" y="248.4" inRotation="2.9308941091345355" inDistance="17.691240770505622" outRotation="0.6281701124208788" outDistance="23.482759633399127"></CubicDetachedVertex>
+<CubicDetachedVertex x="448.3" y="253.1" inRotation="2.7191588072473074" inDistance="21.70829334609242" outRotation="0.30467441549828556" outDistance="16.667633305301614"></CubicDetachedVertex>
+<CubicDetachedVertex x="494.3" y="254.5" inRotation="2.8917517921501417" inDistance="14.964624953536253" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<StraightVertex x="494.3" y="227.8"></StraightVertex>
+<StraightVertex x="333.8" y="213.7"></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFD6D6D6"/></Fill>
+</Shape></Node><Node name="face"><Shape name="face-fill">
+<PointsPath name="face-fill-path" isClosed="true">
+<CubicDetachedVertex x="213.82" y="448.58" inRotation="0.0" inDistance="0.0" outRotation="1.2974396253029725" outDistance="65.3047571008422"></CubicDetachedVertex>
+<CubicDetachedVertex x="331.21" y="583.46" inRotation="-2.8508666241974194" inDistance="55.05012261566724" outRotation="0.3063586968860207" outDistance="34.51718702327872"></CubicDetachedVertex>
+<CubicDetachedVertex x="422.36" y="584.41" inRotation="2.8315727309162355" inDistance="28.845119171187395" outRotation="-0.34072097622186365" outDistance="34.174559250998364"></CubicDetachedVertex>
+<CubicDetachedVertex x="482.83" y="521.76" inRotation="1.8530027190260865" inDistance="31.9956403280197" outRotation="-1.285881846956985" outDistance="20.350412772226495"></CubicDetachedVertex>
+<CubicDetachedVertex x="491.32" y="450.58" inRotation="1.6430227948236151" inDistance="28.68478690874312" outRotation="-1.49150582144325" outDistance="70.95292312512568"></CubicDetachedVertex>
+<CubicDetachedVertex x="499.1" y="241.02" inRotation="1.60487923309265" inDistance="43.72539422349445" outRotation="0.0" outDistance="0.0"></CubicDetachedVertex>
+<StraightVertex x="495.5" y="215.6"></StraightVertex>
+<StraightVertex x="336.1" y="208.0"></StraightVertex>
+<StraightVertex x="212.7" y="232.4"></StraightVertex>
+<StraightVertex x="200.4" y="392.3"></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape></Node></Node></Node>
+<Node name="Anchored neck"><Shape name="neck-outline-right">
+<PointsPath name="neck-outline-right-path" isClosed="false">
+<StraightVertex x="415.52" y="589.33"><DataBindContext sourcePathIds="0:40-0:1000" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1001" propertyKey="25"/></StraightVertex>
+<StraightVertex x="429.23" y="667.06"><DataBindContext sourcePathIds="0:40-0:1002" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1003" propertyKey="25"/></StraightVertex>
+</PointsPath>
+<Stroke thickness="11.21" cap="round" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="neck-outline-left">
+<PointsPath name="neck-outline-left-path" isClosed="false">
+<StraightVertex x="219.62" y="466.33"><DataBindContext sourcePathIds="0:40-0:1004" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1005" propertyKey="25"/></StraightVertex>
+<StraightVertex x="170.51" y="667.13"><DataBindContext sourcePathIds="0:40-0:1006" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1007" propertyKey="25"/></StraightVertex>
+</PointsPath>
+<Stroke thickness="11.27" cap="round" join="round"><SolidColor colorValue="FF000000"/></Stroke>
+</Shape>
+<Shape name="neck-shadow">
+<PointsPath name="neck-shadow-path" isClosed="true">
+<CubicDetachedVertex x="217.7" y="481.4" inRotation="0.0" inDistance="0.0" outRotation="1.041299179360036" outDistance="45.53559047602222"><DataBindContext sourcePathIds="0:40-0:1008" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1009" propertyKey="25"/></CubicDetachedVertex>
+<CubicDetachedVertex x="313.7" y="577.3" inRotation="-2.696673343710382" inDistance="42.984764742871405" outRotation="0.4636476090008082" outDistance="36.6715148309966"><DataBindContext sourcePathIds="0:40-0:1010" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1011" propertyKey="25"/></CubicDetachedVertex>
+<CubicDetachedVertex x="413.2" y="589.1" inRotation="2.9043179982904297" inDistance="31.482058382513642" outRotation="0.0" outDistance="0.0"><DataBindContext sourcePathIds="0:40-0:1012" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1013" propertyKey="25"/></CubicDetachedVertex>
+<CubicDetachedVertex x="420.1" y="626.3" inRotation="0.0" inDistance="0.0" outRotation="2.808898623627674" outDistance="46.23526792395611"><DataBindContext sourcePathIds="0:40-0:1014" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1015" propertyKey="25"/></CubicDetachedVertex>
+<CubicDetachedVertex x="290.1" y="600.2" inRotation="0.6416594902491227" inDistance="43.44007366476255" outRotation="-2.50884381858761" outDistance="50.22290314189339"><DataBindContext sourcePathIds="0:40-0:1016" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1017" propertyKey="25"/></CubicDetachedVertex>
+<CubicDetachedVertex x="217.7" y="481.4" inRotation="1.3661944482832304" inDistance="46.264997568356215" outRotation="0.0" outDistance="0.0"><DataBindContext sourcePathIds="0:40-0:1018" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1019" propertyKey="25"/></CubicDetachedVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFDBDBDB"/></Fill>
+</Shape>
+<Shape name="neck-fill">
+<PointsPath name="neck-fill-path" isClosed="true">
+<StraightVertex x="169.5" y="667.0"><DataBindContext sourcePathIds="0:40-0:1020" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1021" propertyKey="25"/></StraightVertex>
+<StraightVertex x="217.4" y="462.0"><DataBindContext sourcePathIds="0:40-0:1022" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1023" propertyKey="25"/></StraightVertex>
+<StraightVertex x="406.6" y="548.0"><DataBindContext sourcePathIds="0:40-0:1024" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1025" propertyKey="25"/></StraightVertex>
+<StraightVertex x="429.5" y="667.0"><DataBindContext sourcePathIds="0:40-0:1026" propertyKey="24"/><DataBindContext sourcePathIds="0:40-0:1027" propertyKey="25"/></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape></Node>
+<Shape name="background">
+<PointsPath name="background-path" isClosed="true">
+<StraightVertex x="0.0" y="0.0"></StraightVertex>
+<StraightVertex x="668.0" y="0.0"></StraightVertex>
+<StraightVertex x="668.0" y="816.0"></StraightVertex>
+<StraightVertex x="0.0" y="816.0"></StraightVertex>
+</PointsPath>
+<Fill><SolidColor colorValue="FFFFFFFF"/></Fill>
+</Shape>
+<StateMachine name="Follow" id="0:7"><StateMachineLayer name="Tracking"><EntryState><StateTransition stateToId="0:12"/></EntryState><AnimationState x="220" y="0" id="0:12" animationId="0:20"/><AnyState x="220" y="-150"/><ExitState x="440" y="-150"/></StateMachineLayer></StateMachine><LinearAnimation name="Rest" id="0:20" duration="60"/>
+</Artboard>
+<ViewModel name="CharacterFollow" id="0:40" defaultInstanceId="0:41">
+<ViewModelPropertyNumber name="neck0X" id="0:1000"/>
+<ViewModelPropertyNumber name="neck0Y" id="0:1001"/>
+<ViewModelPropertyNumber name="neck1X" id="0:1002"/>
+<ViewModelPropertyNumber name="neck1Y" id="0:1003"/>
+<ViewModelPropertyNumber name="neck2X" id="0:1004"/>
+<ViewModelPropertyNumber name="neck2Y" id="0:1005"/>
+<ViewModelPropertyNumber name="neck3X" id="0:1006"/>
+<ViewModelPropertyNumber name="neck3Y" id="0:1007"/>
+<ViewModelPropertyNumber name="neck4X" id="0:1008"/>
+<ViewModelPropertyNumber name="neck4Y" id="0:1009"/>
+<ViewModelPropertyNumber name="neck5X" id="0:1010"/>
+<ViewModelPropertyNumber name="neck5Y" id="0:1011"/>
+<ViewModelPropertyNumber name="neck6X" id="0:1012"/>
+<ViewModelPropertyNumber name="neck6Y" id="0:1013"/>
+<ViewModelPropertyNumber name="neck7X" id="0:1014"/>
+<ViewModelPropertyNumber name="neck7Y" id="0:1015"/>
+<ViewModelPropertyNumber name="neck8X" id="0:1016"/>
+<ViewModelPropertyNumber name="neck8Y" id="0:1017"/>
+<ViewModelPropertyNumber name="neck9X" id="0:1018"/>
+<ViewModelPropertyNumber name="neck9Y" id="0:1019"/>
+<ViewModelPropertyNumber name="neck10X" id="0:1020"/>
+<ViewModelPropertyNumber name="neck10Y" id="0:1021"/>
+<ViewModelPropertyNumber name="neck11X" id="0:1022"/>
+<ViewModelPropertyNumber name="neck11Y" id="0:1023"/>
+<ViewModelPropertyNumber name="neck12X" id="0:1024"/>
+<ViewModelPropertyNumber name="neck12Y" id="0:1025"/>
+<ViewModelPropertyNumber name="neck13X" id="0:1026"/>
+<ViewModelPropertyNumber name="neck13Y" id="0:1027"/>
+<ViewModelPropertyNumber name="mouthX" id="0:1028"/>
+<ViewModelPropertyNumber name="mouthY" id="0:1029"/>
+<ViewModelPropertyNumber name="eyesX" id="0:1030"/>
+<ViewModelPropertyNumber name="eyesY" id="0:1031"/>
+<ViewModelPropertyNumber name="noseX" id="0:1032"/>
+<ViewModelPropertyNumber name="noseY" id="0:1033"/>
+<ViewModelPropertyNumber name="featuresX" id="0:1034"/>
+<ViewModelPropertyNumber name="featuresY" id="0:1035"/>
+<ViewModelPropertyNumber name="headX" id="0:1036"/>
+<ViewModelPropertyNumber name="headY" id="0:1037"/>
+<ViewModelPropertyNumber name="headRotation" id="0:1038"/>
+<ViewModelPropertyNumber name="headScaleX" id="0:1039"/>
+<ViewModelInstance name="Default" id="0:41" exports="true">
+<ViewModelInstanceNumber viewModelPropertyId="0:1000" propertyValue="415.52"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1001" propertyValue="589.33"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1002" propertyValue="429.23"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1003" propertyValue="667.06"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1004" propertyValue="219.62"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1005" propertyValue="466.33"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1006" propertyValue="170.51"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1007" propertyValue="667.13"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1008" propertyValue="217.7"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1009" propertyValue="481.4"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1010" propertyValue="313.7"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1011" propertyValue="577.3"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1012" propertyValue="413.2"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1013" propertyValue="589.1"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1014" propertyValue="420.1"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1015" propertyValue="626.3"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1016" propertyValue="290.1"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1017" propertyValue="600.2"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1018" propertyValue="217.7"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1019" propertyValue="481.4"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1020" propertyValue="169.5"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1021" propertyValue="667.0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1022" propertyValue="217.4"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1023" propertyValue="462.0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1024" propertyValue="406.6"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1025" propertyValue="548.0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1026" propertyValue="429.5"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1027" propertyValue="667.0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1028" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1029" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1030" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1031" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1032" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1033" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1034" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1035" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1036" propertyValue="340"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1037" propertyValue="450"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1038" propertyValue="0"/>
+<ViewModelInstanceNumber viewModelPropertyId="0:1039" propertyValue="1"/>
+</ViewModelInstance></ViewModel>
+<ScriptAsset name="follow" file="follow.luau" id="0:80"/>
+</Rive>

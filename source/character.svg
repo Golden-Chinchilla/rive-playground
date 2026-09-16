@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="668" height="816" viewBox="0 0 668 816" fill="none">
+  <title>卷发眼镜角色 · SVG 静态重建</title>
+  <desc>Editable static vector reconstruction of the user-provided 668 × 816 screenshot. Reference artwork: “Interactive Character Follow” by alinazari, https://rive.app/community/files/28334-53514-interactive-character-follow/ (source page identifies the license as CC BY). Changes: recreated visible geometry as SVG paths and ellipses; added named layers; original Rive interactions, rigging, and animations are not included. This is not an export of the original Rive source. No bitmap images are embedded.</desc>
+
+  <!-- Delete the background group for a transparent canvas. -->
+  <g id="background" inkscape:groupmode="layer" inkscape:label="Background / 背景"><path fill="#FFFFFF" d="M0 0H668V816H0Z"/></g>
+
+  <!-- Neck: white fill, cast shadow, and two open outlines. -->
+  <g id="neck" inkscape:groupmode="layer" inkscape:label="Neck / 脖子">
+    <path id="neck-fill" fill="#FFFFFF" d="M169.5 667L217.4 462L406.6 548L429.5 667Z"/>
+    <path id="neck-shadow" fill="#DBDBDB" d="M217.7 481.4C240.7 520.7 274.9 558.8 313.7 577.3C346.5 593.7 382.6 596.5 413.2 589.1L420.1 626.3C376.4 641.4 324.9 626.2 290.1 600.2C249.6 570.5 227.1 526.7 217.7 481.4Z"/>
+    <path id="neck-outline-left" stroke="#000000" stroke-width="11.27" stroke-linecap="round" d="M 219.62 466.33 L 170.51 667.13"/>
+    <path id="neck-outline-right" stroke="#000000" stroke-width="11.21" stroke-linecap="round" d="M 415.52 589.33 L 429.23 667.06"/>
+  </g>
+
+  <!-- The face and ear have actual white vector fills. -->
+  <g id="face" inkscape:groupmode="layer" inkscape:label="Face fill / 脸部底色">
+    <path id="face-fill" fill="#FFFFFF" d="M 213.82 448.58 C 231.45 511.46 278.47 567.68 331.21 583.46 C 364.12 593.87 394.89 593.21 422.36 584.41 C 454.57 572.99 473.92 552.49 482.83 521.76 C 488.55 502.23 489.25 479.19 491.32 450.58 C 496.94 379.85 497.61 284.72 499.1 241.02 L 495.5 215.6 L 336.1 208 L 212.7 232.4 L 200.4 392.3 Z"/>
+    </g>
+
+  <!-- Soft flat shadows: these are shapes, not raster filters. -->
+  <g id="hair-shadow" fill="#D6D6D6" inkscape:groupmode="layer" inkscape:label="Hair shadow / 头发投影">
+    <path d="M234.7 243C265.8 264.1 307.8 269.6 337.2 242.5C352.4 250.7 372.4 252.1 389.7 248.4C408.7 262.2 428.5 262 448.3 253.1C464.2 258.1 479.8 258.2 494.3 254.5L494.3 227.8L333.8 213.7Z"/>
+  </g>
+
+  <g id="glasses-shadows" fill="#D6D6D6" inkscape:groupmode="layer" inkscape:label="Glasses shadows / 眼镜投影">
+    <path id="left-lens-shadow" d="M381 354C381.8 395.3 353.8 428.7 317.8 428.7C280.9 428.7 251.8 396.9 250.4 357.8C249.5 315.3 278.8 279.6 315.8 279.1C352.8 278.6 379.9 311.2 381 354Z"/>
+    <path id="right-lens-shadow" d="M495.2 281.4C460.8 275.9 430 309.1 427.7 350.7C425.3 393.6 450.3 429.1 488.7 430L495.2 281.4Z"/>
+    <path id="bridge-shadow" d="M377 346C393 341.1 411.2 341.9 429.2 349L429.7 360.2C411.6 351.8 393.3 350.1 378 356.1Z"/>
+  </g>
+
+  <!-- Glass lenses; behind the rims and pupils. -->
+  <g id="lenses" fill="#FFFFFF" inkscape:groupmode="layer" inkscape:label="Lens fills / 镜片底色">
+    <path id="left-lens-fill" d="M373.6 342.9C373.4 378.6 349.2 405.8 317.2 405.5C285 405.2 261.2 380.2 261.6 345.1C262 313.7 285.9 288.8 316.9 288.7C347.9 288.6 372.6 311.6 373.6 342.9Z"/>
+    <path id="right-lens-fill" d="M493.8 290.4C462.9 287.4 438.7 315.2 437 346.8C435.4 381.9 456.3 408.1 489.1 407.5L493.8 290.4Z"/>
+    <path id="right-lens-outside-fill" d="M500.9 298.7C514.5 296.7 523.2 291.1 527 289.2C540.2 304.3 547.4 324 547.2 345.1C546.8 378.8 526.3 408.6 494.6 413.1Z"/>
+  </g>
+
+  <g id="glasses" stroke="#000000" stroke-width="10.5" inkscape:groupmode="layer" inkscape:label="Glasses frames / 眼镜框">
+    <path id="glasses-bridge" d="M 378.49 339.55 C 393.91 333.27 413.27 331.89 430.23 341.28" stroke-width="11.03"/>
+    <path id="glasses-right-temple" d="M 497.42 339.57 L 546.95 343.97" stroke-width="10.90"/>
+    <path id="glasses-left-rim" d="M 378.42 343.64 C 376.25 380.25 350.36 410.27 317.19 411.23 C 282.72 412.15 256.7 381.67 256 345.32 C 255.13 304.12 284.12 271.69 318.49 271.47 C 352.48 271.46 380.06 302.73 378.36 343.97 Z" stroke-width="11.30"/>
+    <path id="glasses-right-rim" d="M 546.97 345.25 C 544.74 382.4 520.54 412.05 488.48 413.57 C 455.67 414.81 430.6 382.92 431.23 346.16 C 431.29 305.84 459.18 274.16 490.49 273.94 C 523.11 273.6 549.16 305.84 546.76 345.27 Z" stroke-width="10.93"/>
+  </g>
+
+  <!-- The cheek edge intentionally crosses the right lens, as in the reference. -->
+  <g id="face-right-edge" inkscape:groupmode="layer" inkscape:label="Face outline / 脸部轮廓">
+    <path stroke="#000000" stroke-width="11.03" d="M 213.82 448.58 C 231.45 511.46 278.47 567.68 331.21 583.46 C 364.12 593.87 394.89 593.21 422.36 584.41 C 454.57 572.99 473.92 552.49 482.83 521.76 C 488.55 502.23 489.25 479.19 491.32 450.58 C 496.94 379.85 497.61 284.72 499.1 241.02" id="face-outline"/>
+  </g>
+
+  <g id="nose" inkscape:groupmode="layer" inkscape:label="Nose / 鼻子">
+    <path id="nose-fill" fill="#FFFFFF" d="M 378.25 372.47 C 389.91 361.54 406.73 359.05 421.62 368.27 C 435.48 378.63 438.34 395.2 430.39 408.12 C 418.46 425.71 398.55 425.92 378.32 414.24 Z"/>
+    <path id="nose-outline" stroke="#000000" stroke-width="11.15" d="M 378.25 372.47 C 389.91 361.54 406.73 359.05 421.62 368.27 C 435.48 378.63 438.34 395.2 430.39 408.12 C 418.46 425.71 398.55 425.92 378.32 414.24"/>
+  </g>
+
+  <g id="eyes" fill="#000000" inkscape:groupmode="layer" inkscape:label="Pupils / 瞳孔">
+    <ellipse id="pupil-left" cx="344.83" cy="345.70" rx="10.45" ry="8.82"/>
+    <ellipse id="pupil-right" cx="460.92" cy="347.98" rx="10.40" ry="8.86"/>
+  </g>
+
+  <g id="mouth" inkscape:groupmode="layer" inkscape:label="Mouth / 嘴巴">
+    <path stroke="#000000" stroke-width="11.15" d="M 347.38 450.32 C 367.79 460.93 395.8 468.43 418.46 459.99"/>
+  </g>
+
+  <g id="ear" inkscape:groupmode="layer" inkscape:label="Ear / 耳朵">
+    <path id="ear-fill" fill="#FFFFFF" d="M 222.29 391.94 C 207.61 392.31 186.72 390.1 182.25 406.64 C 178.22 423.09 183.58 441.24 197.69 447.18 C 211.29 452.55 228.96 441.04 234.73 427.49 L 223.8 422 Z"/>
+    <path id="ear-outline" stroke="#000000" stroke-width="11.15" d="M 222.29 391.94 C 207.61 392.31 186.72 390.1 182.25 406.64 C 178.22 423.09 183.58 441.24 197.69 447.18 C 211.29 452.55 228.96 441.04 234.73 427.49"/>
+  </g>
+
+  <!-- A single continuous hair silhouette with editable Bezier handles. -->
+  <g id="hair" fill="#000000" inkscape:groupmode="layer" inkscape:label="Hair / 头发">
+    <path id="hair-silhouette" d="M 199.23 183.32 C 193.3 145.19 211.69 111.53 242.12 98.94 C 265.5 89.19 291.03 93.34 311.54 106.6 C 336.8 80.96 374.41 80.27 400.81 103.27 C 427.22 80.56 460.64 83.34 479.88 114.45 C 519.85 117.79 548.45 156.54 537.34 198.12 C 558.89 216.53 563.98 244.52 553.67 268.39 C 542.98 289.8 525.36 303.14 496.84 304.04 L 492.31 242.79 C 478.7 247.64 461.19 246.06 448.31 240.45 C 428.88 250.78 406.94 250.47 388.04 230.68 C 374.08 237.28 353.62 239.22 336.77 231.41 C 312.16 263.17 268.51 267.07 234.94 242.46 C 255.49 259.07 258.16 282.46 256.84 311.81 C 251.37 341.77 247.58 378.54 234.65 390.1 C 227.4 395.64 215.74 393.62 202.91 391.5 C 178.49 377.55 165.48 333.13 163.9 298.32 C 163.6 289.18 164.14 281.58 165.19 274.17 C 151.38 255.37 146.43 231.7 156.21 211.81 C 164.53 194.27 182.36 185.02 199.18 183.01 Z"/>
+  </g>
+</svg>

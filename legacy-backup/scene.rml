@@ -1,0 +1,307 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:200" clip="true" width="668" height="816" styleId="0:5" name="SVG Mouse Follow" id="0:2">
+        <Fill name="Background"><SolidColor colorValue="FFFFFFFF" name="White"/></Fill>
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+        <LayoutComponent width="668" height="816" styleId="0:11" name="Pointer Input" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Pointer Style" id="0:11"/>
+            <ScriptedLayout scriptAssetId="0:300" name="Continuous Pointer Follow" id="0:12"/>
+        </LayoutComponent>
+
+        <Node name="Static Neck">
+                <Shape name="neck-outline-right">
+                    <PointsPath isClosed="false" name="Contour 1">
+                        <StraightVertex x="415.52" y="589.33"/>
+                        <StraightVertex x="429.23" y="667.06"/>
+                    </PointsPath>
+                    <Stroke thickness="11.21" cap="round" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                </Shape>
+                <Shape name="neck-outline-left">
+                    <PointsPath isClosed="false" name="Contour 1">
+                        <StraightVertex x="219.62" y="466.33"/>
+                        <StraightVertex x="170.51" y="667.13"/>
+                    </PointsPath>
+                    <Stroke thickness="11.27" cap="round" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                </Shape>
+                <Shape name="neck-shadow">
+                    <PointsPath isClosed="true" name="Contour 1">
+                        <CubicDetachedVertex x="217.7" y="481.4" inRotation="0" inDistance="0" outRotation="1.0413" outDistance="45.5356"/>
+                        <CubicDetachedVertex x="313.7" y="577.3" inRotation="-2.6967" inDistance="42.9848" outRotation="0.4636" outDistance="36.6715"/>
+                        <CubicDetachedVertex x="413.2" y="589.1" inRotation="2.9043" inDistance="31.4821" outRotation="0" outDistance="0"/>
+                        <CubicDetachedVertex x="420.1" y="626.3" inRotation="0" inDistance="0" outRotation="2.8089" outDistance="46.2353"/>
+                        <CubicDetachedVertex x="290.1" y="600.2" inRotation="0.6417" inDistance="43.4401" outRotation="-2.5088" outDistance="50.2229"/>
+                        <CubicDetachedVertex x="217.7" y="481.4" inRotation="1.3662" inDistance="46.265" outRotation="0" outDistance="0"/>
+                    </PointsPath>
+                    <Fill name="Fill"><SolidColor colorValue="FFDBDBDB" name="Color"/></Fill>
+                </Shape>
+                <Shape name="neck-fill">
+                    <PointsPath isClosed="true" name="Contour 1">
+                        <StraightVertex x="169.5" y="667"/>
+                        <StraightVertex x="217.4" y="462"/>
+                        <StraightVertex x="406.6" y="548"/>
+                        <StraightVertex x="429.5" y="667"/>
+                    </PointsPath>
+                    <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                </Shape>
+        </Node>
+
+        <Node x="334" y="350" name="Head Follow" id="0:30">
+            <DataBindContext sourcePathIds="0:200-0:202" propertyKey="13"/>
+            <DataBindContext sourcePathIds="0:200-0:203" propertyKey="14"/>
+            <DataBindContext sourcePathIds="0:200-0:204" propertyKey="15"/>
+            <Node x="-334" y="-350" name="SVG Head Artwork">
+                <Node name="SVG hair">
+                    <Shape name="hair-silhouette">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="199.23" y="183.32" inRotation="0" inDistance="0" outRotation="-1.7251" outDistance="38.5884"/>
+                            <CubicDetachedVertex x="242.12" y="98.94" inRotation="2.7493" inDistance="32.9316" outRotation="-0.3951" outDistance="25.3315"/>
+                            <CubicDetachedVertex x="311.54" y="106.6" inRotation="-2.5677" inDistance="24.4231" outRotation="-0.7929" outDistance="35.9927"/>
+                            <CubicDetachedVertex x="400.81" y="103.27" inRotation="-2.4249" inDistance="35.0137" outRotation="-0.7102" outDistance="34.8315"/>
+                            <CubicDetachedVertex x="479.88" y="114.45" inRotation="-2.1247" inDistance="36.5788" outRotation="0.0834" outDistance="40.1093"/>
+                            <CubicDetachedVertex x="537.34" y="198.12" inRotation="-1.3097" inDistance="43.0387" outRotation="0.707" outDistance="28.3431"/>
+                            <CubicDetachedVertex x="553.67" y="268.39" inRotation="-1.1631" inDistance="26.0014" outRotation="2.0339" outDistance="23.9304"/>
+                            <CubicDetachedVertex x="496.84" y="304.04" inRotation="-0.0315" inDistance="28.5342" outRotation="0" outDistance="0"/>
+                            <CubicDetachedVertex x="492.31" y="242.79" inRotation="0" inDistance="0" outRotation="2.7993" outDistance="14.4483"/>
+                            <CubicDetachedVertex x="448.31" y="240.45" inRotation="0.4108" inDistance="14.0487" outRotation="2.6529" outDistance="22.0053"/>
+                            <CubicDetachedVertex x="388.04" y="230.68" inRotation="0.8084" inDistance="27.3652" outRotation="2.7" outDistance="15.4416"/>
+                            <CubicDetachedVertex x="336.77" y="231.41" inRotation="0.434" inDistance="18.572" outRotation="2.23" outDistance="40.179"/>
+                            <CubicDetachedVertex x="234.94" y="242.46" inRotation="0.6326" inDistance="41.6245" outRotation="0.6798" outDistance="26.4234"/>
+                            <CubicDetachedVertex x="256.84" y="311.81" inRotation="-1.5259" inDistance="29.3797" outRotation="1.7514" outDistance="30.4553"/>
+                            <CubicDetachedVertex x="234.65" y="390.1" inRotation="-0.7295" inDistance="17.3441" outRotation="2.4891" outDistance="9.1244"/>
+                            <CubicDetachedVertex x="202.91" y="391.5" inRotation="0.1638" inDistance="13.004" outRotation="-2.6226" outDistance="28.1236"/>
+                            <CubicDetachedVertex x="163.9" y="298.32" inRotation="1.5254" inDistance="34.8458" outRotation="-1.6036" outDistance="9.1449"/>
+                            <CubicDetachedVertex x="165.19" y="274.17" inRotation="1.7116" inDistance="7.484" outRotation="-2.2044" outDistance="23.3272"/>
+                            <CubicDetachedVertex x="156.21" y="211.81" inRotation="2.0278" inDistance="22.1644" outRotation="-1.1279" outDistance="19.4132"/>
+                            <CubicDetachedVertex x="199.18" y="183.01" inRotation="3.0227" inDistance="16.9397" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FF000000" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG ear">
+                    <Shape name="ear-outline">
+                        <PointsPath isClosed="false" name="Contour 1">
+                            <CubicDetachedVertex x="222.29" y="391.94" inRotation="0" inDistance="0" outRotation="3.1164" outDistance="14.6847"/>
+                            <CubicDetachedVertex x="182.25" y="406.64" inRotation="-1.3068" inDistance="17.1334" outRotation="1.811" outDistance="16.9365"/>
+                            <CubicDetachedVertex x="197.69" y="447.18" inRotation="-2.7431" inDistance="15.3093" outRotation="0.3761" outDistance="14.6218"/>
+                            <CubicDetachedVertex x="234.73" y="427.49" inRotation="1.9734" inDistance="14.7274" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="11.15" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                    <Shape name="ear-fill">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="222.29" y="391.94" inRotation="0" inDistance="0" outRotation="3.1164" outDistance="14.6847"/>
+                            <CubicDetachedVertex x="182.25" y="406.64" inRotation="-1.3068" inDistance="17.1334" outRotation="1.811" outDistance="16.9365"/>
+                            <CubicDetachedVertex x="197.69" y="447.18" inRotation="-2.7431" inDistance="15.3093" outRotation="0.3761" outDistance="14.6218"/>
+                            <CubicDetachedVertex x="234.73" y="427.49" inRotation="1.9734" inDistance="14.7274" outRotation="0" outDistance="0"/>
+                            <StraightVertex x="223.8" y="422"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG mouth">
+                    <Shape name="Path">
+                        <PointsPath isClosed="false" name="Contour 1">
+                            <CubicDetachedVertex x="347.38" y="450.32" inRotation="0" inDistance="0" outRotation="0.4794" outDistance="23.003"/>
+                            <CubicDetachedVertex x="418.46" y="459.99" inRotation="2.785" inDistance="24.1808" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="11.15" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                </Node>
+                <Node x="0" y="0" name="SVG eyes">
+                    <DataBindContext sourcePathIds="0:200-0:205" propertyKey="13"/>
+                    <DataBindContext sourcePathIds="0:200-0:206" propertyKey="14"/>
+                    <Shape x="460.92" y="347.98" name="pupil-right">
+                        <Ellipse width="20.8" height="17.72" originX="0.5" originY="0.5" name="Path"/>
+                        <Fill name="Fill"><SolidColor colorValue="FF000000" name="Color"/></Fill>
+                    </Shape>
+                    <Shape x="344.83" y="345.70" name="pupil-left">
+                        <Ellipse width="20.9" height="17.64" originX="0.5" originY="0.5" name="Path"/>
+                        <Fill name="Fill"><SolidColor colorValue="FF000000" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG nose">
+                    <Shape name="nose-outline">
+                        <PointsPath isClosed="false" name="Contour 1">
+                            <CubicDetachedVertex x="378.25" y="372.47" inRotation="0" inDistance="0" outRotation="-0.7531" outDistance="15.9819"/>
+                            <CubicDetachedVertex x="421.62" y="368.27" inRotation="-2.5872" inDistance="17.5134" outRotation="0.6419" outDistance="17.304"/>
+                            <CubicDetachedVertex x="430.39" y="408.12" inRotation="-1.0192" inDistance="15.17" outRotation="2.1668" outDistance="21.254"/>
+                            <CubicDetachedVertex x="378.32" y="414.24" inRotation="0.5236" inDistance="23.3597" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="11.15" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                    <Shape name="nose-fill">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="378.25" y="372.47" inRotation="0" inDistance="0" outRotation="-0.7531" outDistance="15.9819"/>
+                            <CubicDetachedVertex x="421.62" y="368.27" inRotation="-2.5872" inDistance="17.5134" outRotation="0.6419" outDistance="17.304"/>
+                            <CubicDetachedVertex x="430.39" y="408.12" inRotation="-1.0192" inDistance="15.17" outRotation="2.1668" outDistance="21.254"/>
+                            <CubicDetachedVertex x="378.32" y="414.24" inRotation="0.5236" inDistance="23.3597" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG face-right-edge">
+                    <Shape name="face-outline">
+                        <PointsPath isClosed="false" name="Contour 1">
+                            <CubicDetachedVertex x="213.82" y="448.58" inRotation="0" inDistance="0" outRotation="1.2974" outDistance="65.3048"/>
+                            <CubicDetachedVertex x="331.21" y="583.46" inRotation="-2.8509" inDistance="55.0501" outRotation="0.3064" outDistance="34.5172"/>
+                            <CubicDetachedVertex x="422.36" y="584.41" inRotation="2.8316" inDistance="28.8451" outRotation="-0.3407" outDistance="34.1746"/>
+                            <CubicDetachedVertex x="482.83" y="521.76" inRotation="1.853" inDistance="31.9956" outRotation="-1.2859" outDistance="20.3504"/>
+                            <CubicDetachedVertex x="491.32" y="450.58" inRotation="1.643" inDistance="28.6848" outRotation="-1.4915" outDistance="70.9529"/>
+                            <CubicDetachedVertex x="499.1" y="241.02" inRotation="1.6049" inDistance="43.7254" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="11.03" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                </Node>
+                <Node name="SVG glasses">
+                    <Shape name="glasses-right-rim">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="546.97" y="345.25" inRotation="0" inDistance="0" outRotation="1.6308" outDistance="37.2169"/>
+                            <CubicDetachedVertex x="488.48" y="413.57" inRotation="-0.0474" inDistance="32.096" outRotation="3.1038" outDistance="32.8334"/>
+                            <CubicDetachedVertex x="431.23" y="346.16" inRotation="1.5879" inDistance="36.7654" outRotation="-1.5693" outDistance="40.32"/>
+                            <CubicDetachedVertex x="490.49" y="273.94" inRotation="3.1346" inDistance="31.3108" outRotation="-0.0104" outDistance="32.6218"/>
+                            <CubicDetachedVertex x="546.76" y="345.27" inRotation="-1.51" inDistance="39.503" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="10.93" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                    <Shape name="glasses-left-rim">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="378.42" y="343.64" inRotation="0" inDistance="0" outRotation="1.63" outDistance="36.6743"/>
+                            <CubicDetachedVertex x="317.19" y="411.23" inRotation="-0.0289" inDistance="33.1839" outRotation="3.1149" outDistance="34.4823"/>
+                            <CubicDetachedVertex x="256" y="345.32" inRotation="1.5515" inDistance="36.3567" outRotation="-1.5919" outDistance="41.2092"/>
+                            <CubicDetachedVertex x="318.49" y="271.47" inRotation="3.1352" inDistance="34.3707" outRotation="-0.0003" outDistance="33.99"/>
+                            <CubicDetachedVertex x="378.36" y="343.97" inRotation="-1.5296" inDistance="41.275" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="11.30" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                    <Shape name="glasses-right-temple">
+                        <PointsPath isClosed="false" name="Contour 1">
+                            <StraightVertex x="497.42" y="339.57"/>
+                            <StraightVertex x="546.95" y="343.97"/>
+                        </PointsPath>
+                        <Stroke thickness="10.90" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                    <Shape name="glasses-bridge">
+                        <PointsPath isClosed="false" name="Contour 1">
+                            <CubicDetachedVertex x="378.49" y="339.55" inRotation="0" inDistance="0" outRotation="-0.3868" outDistance="16.6498"/>
+                            <CubicDetachedVertex x="430.23" y="341.28" inRotation="-2.6359" inDistance="19.3859" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Stroke thickness="11.03" cap="butt" join="round" name="Stroke"><SolidColor colorValue="FF000000" name="Color"/></Stroke>
+                    </Shape>
+                </Node>
+                <Node name="SVG lenses">
+                    <Shape name="right-lens-outside-fill">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="500.9" y="298.7" inRotation="0" inDistance="0" outRotation="-0.146" outDistance="13.7463"/>
+                            <CubicDetachedVertex x="527" y="289.2" inRotation="2.6779" inDistance="4.2485" outRotation="0.8524" outDistance="20.0562"/>
+                            <CubicDetachedVertex x="547.2" y="345.1" inRotation="-1.5613" inDistance="21.1009" outRotation="1.5827" outDistance="33.7024"/>
+                            <CubicDetachedVertex x="494.6" y="413.1" inRotation="-0.141" inDistance="32.0178" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                    </Shape>
+                    <Shape name="right-lens-fill">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="493.8" y="290.4" inRotation="0" inDistance="0" outRotation="-3.0448" outDistance="31.0453"/>
+                            <CubicDetachedVertex x="437" y="346.8" inRotation="-1.5171" inDistance="31.6457" outRotation="1.6163" outDistance="35.1364"/>
+                            <CubicDetachedVertex x="489.1" y="407.5" inRotation="3.1233" inDistance="32.8055" outRotation="0" outDistance="0"/>
+                            <StraightVertex x="493.8" y="290.4"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                    </Shape>
+                    <Shape name="left-lens-fill">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="373.6" y="342.9" inRotation="0" inDistance="0" outRotation="1.5764" outDistance="35.7006"/>
+                            <CubicDetachedVertex x="317.2" y="405.5" inRotation="0.0094" inDistance="32.0014" outRotation="-3.1323" outDistance="32.2014"/>
+                            <CubicDetachedVertex x="261.6" y="345.1" inRotation="1.5822" inDistance="35.1023" outRotation="-1.5581" outDistance="31.4025"/>
+                            <CubicDetachedVertex x="316.9" y="288.7" inRotation="3.1384" inDistance="31.0002" outRotation="-0.0032" outDistance="31.0002"/>
+                            <CubicDetachedVertex x="373.6" y="342.9" inRotation="-1.6027" inDistance="31.316" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG glasses-shadows">
+                    <Shape name="bridge-shadow">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="377" y="346" inRotation="0" inDistance="0" outRotation="-0.2972" outDistance="16.7335"/>
+                            <CubicDetachedVertex x="429.2" y="349" inRotation="-2.7659" inDistance="19.3497" outRotation="0" outDistance="0"/>
+                            <CubicDetachedVertex x="429.7" y="360.2" inRotation="0" inDistance="0" outRotation="-2.7071" outDistance="19.9542"/>
+                            <CubicDetachedVertex x="378" y="356.1" inRotation="-0.3737" inDistance="16.4344" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFD6D6D6" name="Color"/></Fill>
+                    </Shape>
+                    <Shape name="right-lens-shadow">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="495.2" y="281.4" inRotation="0" inDistance="0" outRotation="-2.9831" outDistance="34.8369"/>
+                            <CubicDetachedVertex x="427.7" y="350.7" inRotation="-1.5156" inDistance="41.6635" outRotation="1.6267" outDistance="42.9671"/>
+                            <CubicDetachedVertex x="488.7" y="430" inRotation="-3.1182" inDistance="38.4105" outRotation="0" outDistance="0"/>
+                            <StraightVertex x="495.2" y="281.4"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFD6D6D6" name="Color"/></Fill>
+                    </Shape>
+                    <Shape name="left-lens-shadow">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="381" y="354" inRotation="0" inDistance="0" outRotation="1.5514" outDistance="41.3077"/>
+                            <CubicDetachedVertex x="317.8" y="428.7" inRotation="0" inDistance="36" outRotation="3.1416" outDistance="36.9"/>
+                            <CubicDetachedVertex x="250.4" y="357.8" inRotation="1.535" inDistance="39.1251" outRotation="-1.592" outDistance="42.5095"/>
+                            <CubicDetachedVertex x="315.8" y="279.1" inRotation="3.1281" inDistance="37.0034" outRotation="-0.0135" outDistance="37.0034"/>
+                            <CubicDetachedVertex x="381" y="354" inRotation="-1.5965" inDistance="42.8141" outRotation="0" outDistance="0"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFD6D6D6" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG hair-shadow">
+                    <Shape name="Path">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="234.7" y="243" inRotation="0" inDistance="0" outRotation="0.5961" outDistance="37.5822"/>
+                            <CubicDetachedVertex x="337.2" y="242.5" inRotation="2.3969" inDistance="39.9846" outRotation="0.4947" outDistance="17.2708"/>
+                            <CubicDetachedVertex x="389.7" y="248.4" inRotation="2.9309" inDistance="17.6912" outRotation="0.6282" outDistance="23.4828"/>
+                            <CubicDetachedVertex x="448.3" y="253.1" inRotation="2.7192" inDistance="21.7083" outRotation="0.3047" outDistance="16.6676"/>
+                            <CubicDetachedVertex x="494.3" y="254.5" inRotation="2.8918" inDistance="14.9646" outRotation="0" outDistance="0"/>
+                            <StraightVertex x="494.3" y="227.8"/>
+                            <StraightVertex x="333.8" y="213.7"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFD6D6D6" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+                <Node name="SVG face">
+                    <Shape name="face-fill">
+                        <PointsPath isClosed="true" name="Contour 1">
+                            <CubicDetachedVertex x="213.82" y="448.58" inRotation="0" inDistance="0" outRotation="1.2974" outDistance="65.3048"/>
+                            <CubicDetachedVertex x="331.21" y="583.46" inRotation="-2.8509" inDistance="55.0501" outRotation="0.3064" outDistance="34.5172"/>
+                            <CubicDetachedVertex x="422.36" y="584.41" inRotation="2.8316" inDistance="28.8451" outRotation="-0.3407" outDistance="34.1746"/>
+                            <CubicDetachedVertex x="482.83" y="521.76" inRotation="1.853" inDistance="31.9956" outRotation="-1.2859" outDistance="20.3504"/>
+                            <CubicDetachedVertex x="491.32" y="450.58" inRotation="1.643" inDistance="28.6848" outRotation="-1.4915" outDistance="70.9529"/>
+                            <CubicDetachedVertex x="499.1" y="241.02" inRotation="1.6049" inDistance="43.7254" outRotation="0" outDistance="0"/>
+                            <StraightVertex x="495.5" y="215.6"/>
+                            <StraightVertex x="336.1" y="208"/>
+                            <StraightVertex x="212.7" y="232.4"/>
+                            <StraightVertex x="200.4" y="392.3"/>
+                        </PointsPath>
+                        <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"/></Fill>
+                    </Shape>
+                </Node>
+            </Node>
+        </Node>
+
+        <StateMachine name="Mouse Follow" id="0:7">
+            <StateMachineLayer name="Active" id="0:8">
+                <AnyState x="300" y="-100"/><ExitState x="400" y="-100"/>
+                <EntryState x="0" y="0"/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+    <ViewModel defaultInstanceId="0:201" name="CharacterMotion" id="0:200">
+        <ViewModelPropertyNumber name="headX" id="0:202"/>
+        <ViewModelPropertyNumber name="headY" id="0:203"/>
+        <ViewModelPropertyNumber name="headRotation" id="0:204"/>
+        <ViewModelPropertyNumber name="eyeX" id="0:205"/>
+        <ViewModelPropertyNumber name="eyeY" id="0:206"/>
+        <ViewModelInstance exports="true" name="Default" id="0:201">
+            <ViewModelInstanceNumber propertyValue="334" viewModelPropertyId="0:202"/>
+            <ViewModelInstanceNumber propertyValue="350" viewModelPropertyId="0:203"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:204"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:205"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:206"/>
+        </ViewModelInstance>
+    </ViewModel>
+    <ScriptAsset file="track.luau" name="Pointer tracking" id="0:300"/>
+</Rive>

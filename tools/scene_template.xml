@@ -1,0 +1,69 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:200" clip="true" width="500" height="500" styleId="0:5" name="Interactive Character" id="0:2">
+        <Fill name="Background"><SolidColor colorValue="FFFFFFFF" name="White"/></Fill>
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+
+        <LayoutComponent width="500" height="500" styleId="0:11" name="Pointer Input" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Pointer Style" id="0:11"/>
+            <ScriptedLayout scriptAssetId="0:300" name="Pointer Follow" id="0:12"/>
+        </LayoutComponent>
+
+        <Node x="250" y="250" name="Neck" id="0:20">
+            <Shape x="-43" y="120" rotation="0.15" name="Left Neck Line"><PointsPath name="Path"><StraightVertex x="0" y="-34"/><StraightVertex x="0" y="38"/></PointsPath><Stroke thickness="6" cap="round" name="Stroke"><SolidColor colorValue="FF050505" name="Black"/></Stroke></Shape>
+            <Shape x="43" y="120" rotation="-0.15" name="Right Neck Line"><PointsPath name="Path"><StraightVertex x="0" y="-34"/><StraightVertex x="0" y="38"/></PointsPath><Stroke thickness="6" cap="round" name="Stroke"><SolidColor colorValue="FF050505" name="Black"/></Stroke></Shape>
+        </Node>
+
+        <!-- The three traced vector poses in zz_poses.rml attach to this node. -->
+        <Node x="250" y="245" name="Head Follow" id="0:30">
+            <DataBindContext sourcePathIds="0:200-0:202" propertyKey="13"/>
+            <DataBindContext sourcePathIds="0:200-0:203" propertyKey="14"/>
+            <DataBindContext sourcePathIds="0:200-0:204" propertyKey="15"/>
+
+            <!-- Kept first so it renders over all traced poses. -->
+            <Node opacity="0" name="Blink Overlay" id="0:70">
+                <Shape x="-35" y="-12" name="Left Lid"><Rectangle width="23" height="5" cornerRadiusTL="2.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF050505" name="Black"/></Fill></Shape>
+                <Shape x="35" y="-12" name="Right Lid"><Rectangle width="23" height="5" cornerRadiusTL="2.5" name="Path"/><Fill name="Fill"><SolidColor colorValue="FF050505" name="Black"/></Fill></Shape>
+                <Shape x="-35" y="-12" name="Left Closed Eye Fill"><Ellipse width="58" height="45" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="White"/></Fill></Shape>
+                <Shape x="35" y="-12" name="Right Closed Eye Fill"><Ellipse width="61" height="48" name="Path"/><Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="White"/></Fill></Shape>
+            </Node>
+            <!-- GENERATED_POSES -->
+        </Node>
+
+        <LinearAnimation fps="60" duration="180" loopValue="loop" name="Blink" id="0:100">
+            <KeyedObject objectId="0:70"><KeyedProperty propertyKey="18">
+                <KeyFrameDouble value="0" frame="0" interpolationType="hold"/>
+                <KeyFrameDouble value="0" frame="104" interpolationType="linear"/>
+                <KeyFrameDouble value="1" frame="109" interpolationType="hold"/>
+                <KeyFrameDouble value="1" frame="116" interpolationType="linear"/>
+                <KeyFrameDouble value="0" frame="122" interpolationType="hold"/>
+                <KeyFrameDouble value="0" frame="180" interpolationType="hold"/>
+            </KeyedProperty></KeyedObject>
+        </LinearAnimation>
+
+        <StateMachine name="Pointer Follow" id="0:7">
+            <StateMachineLayer name="Blink Layer" id="0:8">
+                <AnyState x="360" y="-120"/><ExitState x="460" y="-120"/>
+                <EntryState x="0" y="0"><StateTransition stateToId="0:102"/></EntryState>
+                <AnimationState x="170" y="0" animationId="0:100" id="0:102"/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+    <ViewModel defaultInstanceId="0:201" name="CharacterMotion" id="0:200">
+        <ViewModelPropertyNumber name="headX" id="0:202"/>
+        <ViewModelPropertyNumber name="headY" id="0:203"/>
+        <ViewModelPropertyNumber name="headRotation" id="0:204"/>
+        <ViewModelPropertyNumber name="poseCenter" id="0:211"/>
+        <ViewModelPropertyNumber name="poseLeft" id="0:212"/>
+        <ViewModelPropertyNumber name="poseRight" id="0:213"/>
+        <ViewModelInstance exports="true" name="Default" id="0:201">
+            <ViewModelInstanceNumber propertyValue="250" viewModelPropertyId="0:202"/>
+            <ViewModelInstanceNumber propertyValue="245" viewModelPropertyId="0:203"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:204"/>
+            <ViewModelInstanceNumber propertyValue="1" viewModelPropertyId="0:211"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:212"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:213"/>
+        </ViewModelInstance>
+    </ViewModel>
+    <ScriptAsset file="track.luau" name="Pointer tracking" id="0:300"/>
+</Rive>
