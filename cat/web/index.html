@@ -13,13 +13,13 @@
 <section class="intro"><div><span class="eyebrow">A LITTLE WALK, A LITTLE JOY.</span><h1>出去走走。</h1></div><p>黑白线条，一点点好奇心。<br>这只猫，是实时播放的 Rive 矢量动画。</p></section>
 <section class="stage" id="stage" aria-label="黑白猫咪走路动画">
 <span class="stage-label eyebrow">CAT WALK · LIVE RIVE CANVAS</span><div class="floor" aria-hidden="true"></div>
-<div class="actor" id="actor"><canvas id="cat" role="img" aria-label="一只黑白粗线条猫，四条腿交替迈步，头部和尾巴轻轻摆动"></canvas></div>
+<div class="actor" id="actor"><canvas id="cat" role="img" aria-label="一只侧身朝右的白猫，四条腿交替迈步，头部和弯尾轻轻摆动"></canvas></div>
 <div id="message" role="status" aria-live="polite">正在加载猫咪…</div>
 </section>
 <section class="controls" aria-label="动画控制"><div class="buttons">
-<button id="play" class="primary" disabled aria-pressed="true">Ⅱ 暂停</button><button id="travel" disabled aria-pressed="true">↗ 往前走</button><button id="direction" disabled>← 向左走</button>
+<button id="play" class="primary" disabled aria-pressed="true">Ⅱ 暂停</button><button id="travel" disabled aria-pressed="false">↻ 原地循环</button><button id="direction" disabled>← 向左走</button>
 </div><span class="meta">1.2 S LOOP &nbsp; / &nbsp; 4-BEAT WALK &nbsp; / &nbsp; VECTOR</span></section>
-<footer><span>独立头部 · 四肢 · 弯尾 &nbsp; / &nbsp; 原创矢量重绘</span><a href="./walking-cat.riv" download>下载 .riv 资源 ↗</a></footer>
+<footer><span>独立头部 · 四肢 · 弯尾 &nbsp; / &nbsp; 原创矢量重绘</span><a href="./walking-cat.riv?v=profile-walk-3" download>下载 .riv 资源 ↗</a></footer>
 </main>
 <script src="https://unpkg.com/@rive-app/canvas@2.42.1/rive.js"></script>
 <script>
@@ -29,15 +29,15 @@
   const stage = $('stage'), actor = $('actor'), message = $('message');
   const controls = [$('play'), $('travel'), $('direction')];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let running = !reduced.matches, travel = true, direction = 1, ready = false;
+  let running = !reduced.matches, travel = false, direction = 1, ready = false;
   let time = 0, last = null, x = 0, raf = 0, destroyed = false;
   const cycle = 1.2;
   // Match the baked stance speed so a planted paw stays on the webpage ground.
-  const unitsPerSecond = 68 / (0.66 * cycle);
+  const unitsPerSecond = 96 / (0.66 * cycle);
   if (!window.rive) { message.textContent = 'Rive 运行库未能加载，请检查网络后刷新。'; return; }
   rive.RuntimeLoader.setWasmUrl('https://unpkg.com/@rive-app/canvas@2.42.1/rive.wasm');
   const player = new rive.Rive({
-    src: './walking-cat.riv?v=rounded-cat-2', canvas: $('cat'), artboard: 'Cat Walk',
+    src: './walking-cat.riv?v=profile-walk-3', canvas: $('cat'), artboard: 'Cat Walk',
     animations: 'Walk', autoplay: false,
     layout: new rive.Layout({ fit: rive.Fit.Contain, alignment: rive.Alignment.Center }),
     onLoad: () => {
@@ -49,7 +49,13 @@
       message.textContent = '动画加载失败。请先运行 python3 cat/build.py 和 rive cat --once，再把 cat/build/walking-cat.riv 复制到 cat/web/，通过 HTTP 打开页面。';
     }
   });
-  function center() { x = (stage.clientWidth - actor.clientWidth) / 2; place(); }
+  function center() {
+    x = (stage.clientWidth - actor.clientWidth) / 2;
+    // Match the artboard's planted paw outline at every responsive canvas size.
+    const floorY = 334 + 128 + 7.5 / 2;
+    stage.querySelector('.floor').style.bottom = `${20 + (560 - floorY) * actor.clientWidth / 800}px`;
+    place();
+  }
   function place() { actor.style.transform = `translateX(${x}px) scaleX(${direction})`; }
   function syncControls() {
     $('play').textContent = running ? 'Ⅱ 暂停' : '▶ 播放';
