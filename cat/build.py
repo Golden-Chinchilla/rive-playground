@@ -14,8 +14,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WIDTH, HEIGHT = 800, 560
 FPS, FRAMES, SAMPLE_STEP = 60, 72, 2
-STRIDE, STANCE = 104.0, 0.64
-FLOOR = 103.0
+STRIDE, STANCE = 68.0, 0.66
+SWING_LIFT = 18.0
+FLOOR = 128.0
 INK, PAPER, SHADE = '#111111', '#ffffff', '#d9d9d9'
 TAU = math.tau
 SVG = 'http://www.w3.org/2000/svg'
@@ -106,12 +107,12 @@ def foot(phase: float):
     # Hermite swing matches the stance velocity at lift-off and touchdown.
     m = -(1-STANCE)/STANCE
     u = (-2*q**3+3*q**2) + m*(2*q**3-3*q**2+q)
-    return STRIDE*(-.5+u), FLOOR - 34*math.sin(math.pi*q)**2
+    return STRIDE*(-.5+u), FLOOR - SWING_LIFT*math.sin(math.pi*q)**2
 
 
 def knee(hx, hy, ax, ay, rear):
     # Two-link inverse kinematics, baked at authoring time only.
-    a, b = (76., 69.) if rear else (72., 73.)
+    a, b = (58., 54.) if rear else (54., 50.)
     dx, dy = ax-hx, ay-hy
     d = min(math.hypot(dx, dy), a+b-.01)
     ux, uy = dx/d, dy/d
@@ -122,24 +123,25 @@ def knee(hx, hy, ax, ay, rear):
 
 
 def leg(name, phase, rear, far, body_y):
-    hx = -91. if rear else 78.
-    if far: hx += 11
-    hy = -25.+body_y
+    hx = -56. if rear else 54.
+    if far: hx += 8
+    hy = 24.+body_y
     dx, fy = foot(phase)
     fx = hx+dx
     ax, ay = fx, fy-20.
     kx, ky = knee(hx, hy, ax, ay, rear)
-    w = 17. if rear else 14.
-    # One closed outline per leg avoids visible hinges between rigid pieces.
-    d = (f'M {hx-w} {hy-14} '
-         f'C {hx-w-6} {hy+20} {kx-13} {ky-21} {kx-13} {ky} '
-         f'C {kx-13} {ky+19} {ax-12} {ay-20} {ax-12} {ay} '
-         f'C {ax-16} {fy-4} {ax-8} {fy} {ax+7} {fy} '
-         f'L {ax+25} {fy} '
-         f'C {ax+39} {fy} {ax+39} {fy-19} {ax+25} {fy-22} '
-         f'L {ax+12} {fy-24} '
-         f'C {ax+12} {ay-24} {kx+14} {ky+20} {kx+14} {ky} '
-         f'C {kx+14} {ky-23} {hx+w+8} {hy+13} {hx+w} {hy-14} Z')
+    w = 22. if rear else 20.
+    paw = 18.
+    # Chunkier continuous outline keeps the original sticker-like proportions.
+    d = (f'M {hx-w} {hy-18} '
+         f'C {hx-w-4} {hy+8} {kx-12} {ky-16} {kx-12} {ky} '
+         f'C {kx-12} {ky+12} {ax-12} {ay-14} {ax-11} {ay} '
+         f'C {ax-13} {fy-4} {ax-7} {fy} {ax+4} {fy} '
+         f'L {ax+paw} {fy} '
+         f'C {ax+paw+10} {fy} {ax+paw+11} {fy-13} {ax+paw+4} {fy-17} '
+         f'L {ax+10} {fy-19} '
+         f'C {ax+10} {ay-18} {kx+12} {ky+12} {kx+12} {ky} '
+         f'C {kx+12} {ky-18} {hx+w+4} {hy+8} {hx+w} {hy-18} Z')
     return path(name, d, fill=SHADE if far else PAPER, width=7.5)
 
 
@@ -147,26 +149,26 @@ def cat_scene(t: float):
     phase = (t/(FRAMES/FPS)) % 1.
     wave = TAU*phase
     bob = -2.8*math.cos(2*wave)
-    tail = path('Curled tail', 'M 2 13 C -54 22 -108 -8 -121 -55 C -132 -92 -116 -129 -132 -145 C -148 -161 -174 -148 -171 -128 C -167 -111 -186 -108 -193 -124 C -210 -163 -164 -195 -133 -182 C -92 -165 -89 -137 -92 -103 C -96 -62 -49 -14 0 -16 Z')
-    tail_node = group('Tail sway', [tail], x=-112, y=-56+bob, rotation=.085*math.sin(wave-.8))
-    body = path('Body', 'M -133 -41 C -150 -90 -116 -133 -66 -139 C -12 -151 53 -136 92 -120 C 122 -104 139 -67 121 -32 C 96 4 53 18 -7 14 C -75 16 -112 -3 -133 -41 Z')
-    belly = path('Soft belly shade', 'M -116 -20 C -49 21 42 3 91 -30 C 79 10 18 26 -39 16 C -80 9 -104 -2 -116 -20 Z', fill=SHADE, stroke=None)
-    # The oversized head, dot eyes, black ears and broad line echo the reference.
+    tail = path('Curled tail', 'M -2 9 C -48 9 -88 -11 -104 -48 C -119 -82 -112 -122 -127 -141 C -139 -156 -160 -144 -156 -126 C -152 -110 -167 -105 -171 -119 C -182 -151 -149 -175 -121 -164 C -87 -151 -77 -118 -76 -87 C -75 -49 -41 -13 -2 -12 Z')
+    tail_node = group('Tail sway', [tail], x=-106, y=-8+bob, rotation=.07*math.sin(wave-.7))
+    body = path('Body', 'M -122 -8 C -125 -60 -97 -102 -46 -112 C 12 -123 76 -108 108 -76 C 130 -54 136 -14 121 24 C 102 64 57 86 -4 86 C -67 86 -108 58 -120 14 C -123 6 -122 -1 -122 -8 Z')
+    belly = path('Soft belly shade', 'M -94 38 C -46 65 32 60 87 28 C 76 55 32 75 -20 74 C -54 72 -79 58 -94 38 Z', fill=SHADE, stroke=None)
+    # Keep the big round head and facial proportions close to the original sticker.
     head_parts = [
-        path('Head', 'M -77 -51 C -96 -75 -99 -105 -89 -128 L -96 -189 C -98 -207 -87 -215 -73 -201 L -29 -161 C -3 -168 23 -167 48 -156 L 79 -190 C 94 -207 110 -201 109 -181 L 107 -122 C 131 -91 133 -59 116 -32 C 97 -1 62 11 16 9 C -25 9 -55 -13 -77 -51 Z'),
-        path('Left ear ink', 'M -77 -185 C -78 -191 -73 -192 -68 -186 L -43 -163 C -52 -157 -63 -152 -73 -151 Z', fill=INK, stroke=None),
-        path('Right ear ink', 'M 66 -153 L 92 -181 C 96 -186 99 -183 99 -177 L 97 -142 Z', fill=INK, stroke=None),
-        ellipse('Left eye', -22, -80, 7, 8),
-        ellipse('Right eye', 65, -84, 7, 8),
-        path('Nose', 'M 31 -64 C 38 -68 49 -68 56 -65 C 63 -61 49 -48 44 -48 C 39 -48 25 -59 31 -64 Z', fill=INK, stroke=None),
-        path('Smile', 'M 15 -37 C 23 -25 43 -27 44 -46 C 47 -25 68 -25 74 -40', fill=None, width=6),
-        path('Whisker left top', 'M -46 -55 C -59 -59 -73 -60 -85 -60', fill=None, width=5.5),
-        path('Whisker left bottom', 'M -47 -42 C -60 -42 -72 -38 -79 -34', fill=None, width=5.5),
-        path('Whisker right top', 'M 99 -59 C 111 -64 127 -65 139 -64', fill=None, width=5.5),
-        path('Whisker right bottom', 'M 100 -46 C 111 -48 128 -47 139 -44', fill=None, width=5.5),
+        path('Head', 'M -82 -28 C -96 -47 -103 -74 -100 -101 C -98 -118 -92 -131 -86 -142 L -92 -182 C -94 -198 -84 -205 -71 -193 L -34 -160 C -3 -169 30 -167 58 -157 L 92 -188 C 105 -199 114 -192 112 -175 L 108 -137 C 124 -118 132 -96 131 -72 C 129 -42 114 -16 92 0 C 72 13 45 20 14 20 C -31 20 -62 4 -82 -28 Z'),
+        path('Left ear ink', 'M -78 -177 C -79 -183 -74 -184 -69 -179 L -46 -159 C -57 -153 -68 -148 -80 -146 Z', fill=INK, stroke=None),
+        path('Right ear ink', 'M 66 -149 L 88 -173 C 92 -178 96 -175 96 -169 L 94 -139 Z', fill=INK, stroke=None),
+        ellipse('Left eye', -22, -68, 7.5, 8.5),
+        ellipse('Right eye', 58, -71, 7.5, 8.5),
+        path('Nose', 'M 16 -57 C 25 -63 39 -63 47 -57 C 54 -52 40 -41 32 -41 C 24 -41 10 -51 16 -57 Z', fill=INK, stroke=None),
+        path('Smile', 'M 3 -30 C 10 -15 32 -14 33 -40 C 37 -17 59 -16 66 -31', fill=None, width=6.5),
+        path('Whisker left top', 'M -42 -52 C -56 -56 -72 -58 -87 -58', fill=None, width=5.8),
+        path('Whisker left bottom', 'M -40 -38 C -55 -39 -71 -34 -84 -27', fill=None, width=5.8),
+        path('Whisker right top', 'M 85 -52 C 100 -57 118 -58 131 -57', fill=None, width=5.8),
+        path('Whisker right bottom', 'M 86 -40 C 100 -42 118 -41 130 -37', fill=None, width=5.8),
     ]
-    head = group('Head follow-through', head_parts, x=98, y=-82+bob*.75, rotation=.018*math.sin(2*wave-.65))
-    torso = group('Body bounce', [body, belly], y=bob, rotation=.012*math.sin(wave))
+    head = group('Head follow-through', head_parts, x=74, y=-58+bob*.7, rotation=.014*math.sin(2*wave-.6))
+    torso = group('Body bounce', [body, belly], y=bob, rotation=.009*math.sin(wave))
     # Anatomical left/right remain fixed; far limbs precede near limbs in depth.
     parts = [tail_node,
              leg('Far hind leg', phase+.50, True, True, bob),
@@ -176,8 +178,8 @@ def cat_scene(t: float):
              torso, head]
     art = element('Artboard', name='Cat Walk', id='0:2', width=WIDTH, height=HEIGHT, defaultStateMachineId='0:7', styleId='0:5')
     art.append(element('LayoutComponentStyle', id='0:5'))
-    art.append(group('Cat', parts, x=409, y=369))
-    art.append(ellipse('Ground shadow', 405, 478, 151, 9, fill='#e8e8e8'))
+    art.append(group('Cat', parts, x=404, y=344))
+    art.append(ellipse('Ground shadow', 402, 478, 134, 10, fill='#e8e8e8'))
     return art
 
 

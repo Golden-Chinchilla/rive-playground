@@ -33,11 +33,11 @@
   let time = 0, last = null, x = 0, raf = 0, destroyed = false;
   const cycle = 1.2;
   // Match the baked stance speed so a planted paw stays on the webpage ground.
-  const unitsPerSecond = 104 / (0.64 * cycle);
+  const unitsPerSecond = 68 / (0.66 * cycle);
   if (!window.rive) { message.textContent = 'Rive 运行库未能加载，请检查网络后刷新。'; return; }
   rive.RuntimeLoader.setWasmUrl('https://unpkg.com/@rive-app/canvas@2.42.1/rive.wasm');
   const player = new rive.Rive({
-    src: './walking-cat.riv', canvas: $('cat'), artboard: 'Cat Walk',
+    src: './walking-cat.riv?v=rounded-cat-2', canvas: $('cat'), artboard: 'Cat Walk',
     animations: 'Walk', autoplay: false,
     layout: new rive.Layout({ fit: rive.Fit.Contain, alignment: rive.Alignment.Center }),
     onLoad: () => {

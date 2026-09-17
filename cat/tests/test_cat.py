@@ -1,6 +1,7 @@
 """Geometry and compiled-animation invariants; standard-library-only tests."""
 import importlib.util
 import math
+import re
 from pathlib import Path
 import unittest
 import xml.etree.ElementTree as ET
@@ -64,7 +65,10 @@ class WalkingCatTests(unittest.TestCase):
 
     def test_swing_lifts_off_ground(self):
         x, y = build.foot(build.STANCE+(1-build.STANCE)/2)
-        self.assertLess(y, build.FLOOR-25)
+        self.assertGreater(build.SWING_LIFT, 0)
+        self.assertAlmostEqual(x, 0)
+        self.assertAlmostEqual(y, build.FLOOR-build.SWING_LIFT)
+        self.assertLess(y, build.FLOOR)
 
     def test_pose_is_periodic_and_changes(self):
         encode = lambda t: ET.tostring(build.cat_scene(t))
@@ -76,6 +80,41 @@ class WalkingCatTests(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)))
         for node in self.scene.iter('KeyedObject'):
             self.assertIn(node.get('objectId'), ids)
+
+    def test_web_speed_matches_baked_stride(self):
+        html = (ROOT/'web/index.html').read_text()
+        cycle = re.search(r'const cycle = ([0-9.]+);', html)
+        speed = re.search(r'const unitsPerSecond = ([0-9.]+) / \(([0-9.]+) \* cycle\);', html)
+        self.assertIsNotNone(cycle)
+        self.assertIsNotNone(speed)
+        self.assertAlmostEqual(float(cycle[1]), build.FRAMES/build.FPS)
+        self.assertAlmostEqual(float(speed[1]), build.STRIDE)
+        self.assertAlmostEqual(float(speed[2]), build.STANCE)
+
+    def test_short_stride_paws_stay_reachable(self):
+        for rear in (False, True):
+            hx = -56. if rear else 54.
+            a, b = (58., 54.) if rear else (54., 50.)
+            for i in range(361):
+                phase = i/360
+                bob = -2.8*math.cos(2*math.tau*phase)
+                dx, fy = build.foot(phase)
+                hy = 24.+bob
+                ax, ay = hx+dx, fy-20.
+                self.assertLess(math.hypot(ax-hx, ay-hy), a+b-.01)
+                kx, ky = build.knee(hx, hy, ax, ay, rear)
+                self.assertAlmostEqual(math.hypot(kx-hx, ky-hy), a)
+                self.assertAlmostEqual(math.hypot(ax-kx, ay-ky), b)
+
+    def test_pose_topology_and_coordinates_are_stable(self):
+        original = [(n.tag, n.get('name')) for n in build.cat_scene(0).iter()]
+        for frame in range(build.FRAMES+1):
+            nodes = list(build.cat_scene(frame/build.FPS).iter())
+            self.assertEqual([(n.tag, n.get('name')) for n in nodes], original)
+            for node in nodes:
+                for key in ('x', 'y', 'inDistance', 'outDistance', 'rotation'):
+                    if key in node.attrib:
+                        self.assertTrue(math.isfinite(float(node.attrib[key])))
 
     def test_generated_scene_is_reproducible(self):
         self.assertEqual((ROOT/'scene.rml').read_text(), self.text)
