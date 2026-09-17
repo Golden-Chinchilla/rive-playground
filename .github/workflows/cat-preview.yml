@@ -27,7 +27,7 @@ jobs:
       - name: Install Rive CLI
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y libegl1 libgles2 libx11-6 libgl1-mesa-dri
+          sudo apt-get install -y libegl1 libgles2 libx11-6 libgl1-mesa-dri fonts-noto-cjk
           curl -fsSL https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
           bash /tmp/install-rive.sh
           echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
@@ -36,6 +36,10 @@ jobs:
           set -euo pipefail
           mkdir -p build/cat
           rive --version | tee build/cat/cli-version.txt
+          rive docs --list > build/cat/docs-topics.txt
+          for type in Node CubicDetachedVertex PointsPath LinearAnimation KeyFrameDouble; do
+            rive schema "$type" --json > "build/cat/schema-$type.json"
+          done
           python3 cat/build.py
           rive cat --verify --format=json | tee build/cat/verify.json
           rive inspect cat --summary | tee build/cat/inspect.json
